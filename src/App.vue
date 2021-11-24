@@ -1,23 +1,17 @@
 <template>
-  <Navbar />
-  <router-view/>
+  <portafolio-contain />
 </template>
 
 <script>
-import Navbar from '@/components/Navbar'
+import PortafolioContain from "./components/PortafolioContain.vue";
 export default {
-  components: {
-    Navbar
-  }
-}
+  components: { PortafolioContain },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
 }
 </style>
