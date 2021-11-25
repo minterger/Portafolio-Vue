@@ -13,14 +13,31 @@
           <a class="nav-links" href="#contact">Contact Me</a>
         </li>
       </ul>
+      <button @click="toggleMenu" class="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </button>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  setup() {
+    const toggleMenu = () => {
+      const nav = document.querySelector(".nav-navbar");
+      nav.classList.toggle("show");
+    };
+    return {
+      toggleMenu,
+    };
+  },
+};
+</script>
+
 <style scoped>
 #nav {
-  background: #fff;
-  padding: 10px 20px;
+  background: var(--color-bg-navbar);
+  padding: 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,6 +46,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 40px;
+  box-sizing: border-box;
+  transition: background 0.2s ease-in-out;
 }
 
 .nav-contain {
@@ -42,8 +63,9 @@
 .nav-brand {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-primary);
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
 .nav-navbar {
@@ -53,29 +75,69 @@
   padding: 0;
 }
 .nav-items {
-  margin-right: 1em;
+  margin-right: 0.8em;
 }
 .nav-items:last-child {
   margin-right: 0;
 }
 
 .nav-links {
-  color: rgb(51, 51, 51);
+  color: var(--color-text);
   text-decoration: none;
   font-size: 0.9em;
-  padding: 0.5em;
+  padding: 0.5em 0.7em;
   border-radius: 3px;
   transition: all 0.2s ease-in-out;
 }
 
 .nav-links:hover {
-  color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
+  color: var(--color-text-hover);
+  background-color: var(--color-bg-hover);
 }
 
-@media (max-width: 768px) {
+.nav-toggle {
+  background: none;
+  display: none;
+  font-size: 1.5em;
+  color: var(--color-text);
+  cursor: pointer;
+  border: 1px solid var(--color-text);
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 568px) {
   .nav-navbar {
-    display: none;
+    display: flex;
+    position: fixed;
+    background: var(--color-bg-navbar);
+    top: 40px;
+    right: 0;
+    width: 100vw;
+    height: 0;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .nav-navbar.show {
+    height: calc(100vh - 40px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-items {
+    margin: 10px 2px;
+  }
+
+  .nav-links {
+    display: block;
+    text-align: center;
+  }
+
+  .nav-toggle {
+    display: block;
   }
 }
 </style>
