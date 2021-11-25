@@ -23,8 +23,8 @@ body {
 }
 
 body.dark-theme {
-  --color-bg-navbar: #030F12;
-  --color-bg: #121b2b;
+  --color-bg-navbar: #030f12;
+  --color-bg: #0d121c;
   --color-bg-hover: #121b2b;
   --color-text: rgb(218, 218, 218);
   --color-text-hover: rgb(255, 255, 255);
@@ -33,8 +33,8 @@ body.dark-theme {
 
 @media (prefers-color-scheme: dark) {
   body {
-    --color-bg-navbar: #030F12;
-    --color-bg: #121b2b;
+    --color-bg-navbar: #030f12;
+    --color-bg: #0d121c;
     --color-bg-hover: #121b2b;
     --color-text: rgb(218, 218, 218);
     --color-text-hover: rgb(255, 255, 255);
