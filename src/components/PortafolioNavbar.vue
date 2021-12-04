@@ -4,13 +4,13 @@
       <a class="nav-brand" href="#app">Minterger</a>
       <ul class="nav-navbar">
         <li class="nav-items">
-          <a class="nav-links" href="#app">Home</a>
+          <router-link class="nav-links" to="/">Home</router-link>
         </li>
         <li class="nav-items">
-          <a class="nav-links" href="#proyects">Proyects</a>
+          <router-link class="nav-links" to="/asd">Proyects</router-link>
         </li>
         <li class="nav-items">
-          <a class="nav-links" href="#contact">Contact Me</a>
+          <router-link class="nav-links" to="/asd">Contact Me</router-link>
         </li>
       </ul>
       <button @click="toggleMenu" class="nav-toggle">

@@ -1,19 +1,18 @@
 <template>
   <portafolio-navbar />
-  <div class="container">
-    <hello-world />
-  </div>
+  <main class="container">
+    <!-- ver contenido de la ruta -->
+    <router-view></router-view>
+  </main>
 </template>
 
 <script>
 import PortafolioNavbar from "./PortafolioNavbar.vue";
-import HelloWorld from "./HelloWorld.vue";
 
 export default {
   name: "PortafolioContain",
   components: {
     PortafolioNavbar,
-    HelloWorld,
   },
   setup() {},
 };

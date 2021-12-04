@@ -11,7 +11,8 @@
     "boxicons": "^2.0.9",
     "core-js": "^3.6.5",
     "normalize.css": "^8.0.1",
-    "vue": "^3.0.0",
+    "vue": "^3.2.23",
+    "vue-router": "^4.0.12",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
