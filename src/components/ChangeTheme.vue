@@ -1,67 +1,57 @@
+<script setup>
+import { onMounted, ref } from "@vue/runtime-core";
+const bodyClass = document.body.classList;
+const themeValue = ref("");
+
+const savedTheme = (theme) => {
+  if (bodyClass.contains(theme + "-theme")) {
+    localStorage.setItem("theme", theme);
+    themeValue.value = theme;
+  } else {
+    localStorage.setItem("theme", "");
+    themeValue.value = theme === "dark" ? "white" : "dark";
+  }
+};
+
+const changeTheme = () => {
+  // si la media query es true, cambiar el tema
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    bodyClass.toggle("white-theme");
+    // si se cambia el tema guardarlo en localStorage
+    savedTheme("white");
+  } else {
+    bodyClass.toggle("dark-theme");
+    // si se cambia el tema guardarlo en localStorage
+    savedTheme("dark");
+  }
+};
+onMounted(() => {
+  // si el tema esta guardado en el localStorage, cambiar el tema
+  const theme = localStorage.getItem("theme");
+  const preference = window.matchMedia("(prefers-color-scheme: dark)");
+  if (theme === "dark") {
+    bodyClass.add("dark-theme");
+    savedTheme(theme);
+    return;
+  }
+  if (theme === "white") {
+    bodyClass.add("white-theme");
+    savedTheme(theme);
+    return;
+  }
+  if (preference.matches) {
+    savedTheme("white");
+    return;
+  }
+  savedTheme("dark");
+});
+</script>
+
 <template>
   <button @click.prevent="changeTheme" class="change-theme">
     <i class="bx" :class="[themeValue === 'dark' ? 'bxs-sun' : 'bxs-moon']"></i>
   </button>
 </template>
-
-<script>
-import { onMounted, ref } from "@vue/runtime-core";
-export default {
-  setup() {
-    const bodyClass = document.body.classList;
-    const themeValue = ref("");
-
-    const savedTheme = (theme) => {
-      if (bodyClass.contains(theme + "-theme")) {
-        localStorage.setItem("theme", theme);
-        themeValue.value = theme;
-      } else {
-        localStorage.setItem("theme", "");
-        themeValue.value = theme === "dark" ? "white" : "dark";
-      }
-    };
-
-    const changeTheme = () => {
-      // si la media query es true, cambiar el tema
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        bodyClass.toggle("white-theme");
-        // si se cambia el tema guardarlo en localStorage
-        savedTheme("white");
-      } else {
-        bodyClass.toggle("dark-theme");
-        // si se cambia el tema guardarlo en localStorage
-        savedTheme("dark");
-      }
-    };
-    onMounted(() => {
-      // si el tema esta guardado en el localStorage, cambiar el tema
-      const theme = localStorage.getItem("theme");
-      const preference = window.matchMedia("(prefers-color-scheme: dark)");
-      if (theme === "dark") {
-        bodyClass.add("dark-theme");
-        savedTheme(theme);
-        return;
-      }
-      if (theme === "white") {
-        bodyClass.add("white-theme");
-        savedTheme(theme);
-        return;
-      }
-      if (preference.matches) {
-        savedTheme("white");
-        return;
-      }
-      savedTheme("dark");
-    });
-    return {
-      themeValue,
-
-      //methods
-      changeTheme,
-    };
-  },
-};
-</script>
 
 <style scoped>
 .change-theme {

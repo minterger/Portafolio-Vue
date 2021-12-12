@@ -1,3 +1,10 @@
+<script setup>
+    const toggleMenu = () => {
+      const nav = document.querySelector(".nav-navbar");
+      nav.classList.toggle("show");
+    };
+</script>
+
 <template>
   <div id="nav">
     <div class="nav-contain">
@@ -19,20 +26,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  setup() {
-    const toggleMenu = () => {
-      const nav = document.querySelector(".nav-navbar");
-      nav.classList.toggle("show");
-    };
-    return {
-      toggleMenu,
-    };
-  },
-};
-</script>
 
 <style scoped>
 #nav {

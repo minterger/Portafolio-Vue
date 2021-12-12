@@ -1,3 +1,7 @@
+<script setup>
+import PortafolioNavbar from "./PortafolioNavbar.vue";
+</script>
+
 <template>
   <portafolio-navbar />
   <main class="container">
@@ -5,18 +9,6 @@
     <router-view></router-view>
   </main>
 </template>
-
-<script>
-import PortafolioNavbar from "./PortafolioNavbar.vue";
-
-export default {
-  name: "PortafolioContain",
-  components: {
-    PortafolioNavbar,
-  },
-  setup() {},
-};
-</script>
 
 <style scoped>
 .container {

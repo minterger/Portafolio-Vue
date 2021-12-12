@@ -1,16 +1,12 @@
+<script setup>
+import PortafolioContain from "./components/PortafolioContain.vue";
+import ChangeTheme from "./components/ChangeTheme.vue";
+</script>
+
 <template>
   <portafolio-contain />
   <change-theme />
 </template>
-
-<script>
-import PortafolioContain from "./components/PortafolioContain.vue";
-import ChangeTheme from "./components/ChangeTheme.vue";
-
-export default {
-  components: { PortafolioContain, ChangeTheme },
-};
-</script>
 
 <style>
 body {

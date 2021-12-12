@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <div class="hello">
     <p>
@@ -100,11 +103,5 @@
     </ul>
   </div>
 </template>
-
-<script>
-export default {
-  name: "HelloWorld",
-};
-</script>
 
 <style scoped></style>
