@@ -1,20 +1,23 @@
 <script setup>
-    const toggleMenu = () => {
-      const nav = document.querySelector(".nav-navbar");
-      nav.classList.toggle("show");
-    };
+import { ref } from "@vue/reactivity";
+
+let ToggleMenu = ref(false);
+
+const toggleMenu = () => {
+  ToggleMenu.value = !ToggleMenu.value;
+};
 </script>
 
 <template>
   <div id="nav">
     <div class="nav-contain">
       <a class="nav-brand" href="#app">Minterger</a>
-      <ul class="nav-navbar">
+      <ul class="nav-navbar" :class="{ show: ToggleMenu }">
         <li class="nav-items">
           <router-link class="nav-links" to="/">Home</router-link>
         </li>
         <li class="nav-items">
-          <router-link class="nav-links" to="/asd">Proyects</router-link>
+          <router-link class="nav-links" to="/proyects">Proyects</router-link>
         </li>
         <li class="nav-items">
           <router-link class="nav-links" to="/asd">Contact Me</router-link>
@@ -94,9 +97,7 @@
   font-size: 1.5em;
   color: var(--color-text);
   cursor: pointer;
-  border: 1px solid var(--color-text);
   border: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 40px;
   height: 40px;
 }

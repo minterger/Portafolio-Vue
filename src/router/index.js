@@ -4,13 +4,19 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("../views/Home.vue")
+    component: () => import("../views/Home.vue"),
+    meta: {
+      title: "Home"
+    }
   },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   component: () => import("../views/About.vue")
-  // },
+  {
+    path: "/proyects",
+    name: "proyects",
+    component: () => import("../views/Proyects.vue"),
+    meta: {
+      title: "Proyects"
+    }
+  },
   // {
   //   path: "/contact",
   //   name: "contact",
@@ -26,6 +32,11 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next();
 });
 
 export default router;
