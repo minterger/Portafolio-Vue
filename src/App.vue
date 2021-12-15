@@ -35,6 +35,16 @@ body.dark-theme {
     --color-text: rgb(218, 218, 218);
     --color-text-hover: rgb(255, 255, 255);
     --color-text-primary: white;
+
+    --button-primary-bg: #030f12;
+    --button-primary-bg-hover: #121b2b;
+    --button-primary-text: white;
+    --button-primary-text-hover: white;
+
+    --button-secondary-bg: #f0f0f0;
+    --button-secondary-bg-hover: #e0e0e0;
+    --button-secondary-text: #333;
+    --button-secondary-text-hover: #333;
   }
 
   body.white-theme {
