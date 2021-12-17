@@ -12,10 +12,22 @@ import ChangeTheme from "./components/ChangeTheme.vue";
 body {
   --color-bg-navbar: #f0f0f0;
   --color-bg: #fff;
-  --color-bg-hover: rgba(0, 0, 0, 0.576);
+  --color-bg-hover: #1f3cbfe3;
   --color-text: rgb(51, 51, 51);
   --color-text-hover: rgb(255, 255, 255);
   --color-text-primary: #333;
+
+  --border-color: #212d46;
+
+  --button-primary-bg: #f0f0f0;
+  --button-primary-bg-hover: #fff;
+  --button-primary-text: #333;
+  --button-primary-text-hover: #333;
+
+  --button-secondary-bg: #1f3cbf;
+  --button-secondary-bg-hover: #2a44ba;
+  --button-secondary-text: rgb(238, 238, 238);
+  --button-secondary-text-hover: rgb(238, 238, 238);
 }
 
 body.dark-theme {
@@ -25,6 +37,18 @@ body.dark-theme {
   --color-text: rgb(218, 218, 218);
   --color-text-hover: rgb(255, 255, 255);
   --color-text-primary: white;
+
+  --border-color: #212d46;
+
+  --button-primary-bg: #030f12;
+  --button-primary-bg-hover: #121b2b;
+  --button-primary-text: white;
+  --button-primary-text-hover: white;
+
+  --button-secondary-bg: #1f3cbf;
+  --button-secondary-bg-hover: #2a44ba;
+  --button-secondary-text: rgb(238, 238, 238);
+  --button-secondary-text-hover: rgb(238, 238, 238);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,24 +60,38 @@ body.dark-theme {
     --color-text-hover: rgb(255, 255, 255);
     --color-text-primary: white;
 
+    --border-color: #212d46;
+
     --button-primary-bg: #030f12;
     --button-primary-bg-hover: #121b2b;
     --button-primary-text: white;
     --button-primary-text-hover: white;
 
-    --button-secondary-bg: #f0f0f0;
-    --button-secondary-bg-hover: #e0e0e0;
-    --button-secondary-text: #333;
-    --button-secondary-text-hover: #333;
+    --button-secondary-bg: #1f3cbf;
+    --button-secondary-bg-hover: #2a44ba;
+    --button-secondary-text: rgb(238, 238, 238);
+    --button-secondary-text-hover: rgb(238, 238, 238);
   }
 
   body.white-theme {
     --color-bg-navbar: #f0f0f0;
     --color-bg: #fff;
-    --color-bg-hover: rgba(0, 0, 0, 0.576);
+    --color-bg-hover: #1f3cbfe3;
     --color-text: rgb(51, 51, 51);
     --color-text-hover: rgb(255, 255, 255);
     --color-text-primary: #333;
+
+    --border-color: #212d46;
+
+    --button-primary-bg: #f0f0f0;
+    --button-primary-bg-hover: #fff;
+    --button-primary-text: #333;
+    --button-primary-text-hover: #333;
+
+    --button-secondary-bg: #1f3cbf;
+    --button-secondary-bg-hover: #2a44ba;
+    --button-secondary-text: rgb(238, 238, 238);
+    --button-secondary-text-hover: rgb(238, 238, 238);
   }
 }
 

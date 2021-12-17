@@ -17,15 +17,15 @@ defineProps({
 
 <template>
   <div class="card">
-    <div class="img">
+    <div class="img" v-if="img">
       <img :src="img" alt="" />
     </div>
-    <div class="content">
+    <div class="content" v-if="title || description">
       <h3>{{ title }}</h3>
       <p class="description">{{ description }}</p>
     </div>
     <div class="footer">
-      <slot name="footer"></slot>
+      <slot name="footer" />
     </div>
   </div>
 </template>
@@ -33,8 +33,9 @@ defineProps({
 <style scoped>
 .card {
   border-radius: 5px;
-  border: 1px solid #212d46;
+  border: 1px solid var(--border-color);
   width: 200px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -49,10 +50,16 @@ defineProps({
 
 .img {
   overflow: hidden;
-  border-radius: 5px 5px 0 0;
+  border-radius: 4px 4px 0 0;
+  height: 200px;
+  object-fit: cover; 
 }
 
 .footer {
-  border-top: 1px solid #212d46;
+  display: flex;
+  justify-content: end;
+  border-top: 1px solid var(--border-color);
+  gap: 10px;
+  padding: 10px 10px;
 }
 </style>
