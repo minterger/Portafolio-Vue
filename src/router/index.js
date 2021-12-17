@@ -17,11 +17,14 @@ const routes = [
       title: "Proyects"
     }
   },
-  // {
-  //   path: "/contact",
-  //   name: "contact",
-  //   component: () => import("../views/Contact.vue")
-  // },
+  {
+    path: "/contact",
+    name: "contact",
+    component: () => import("../views/Contact.vue"),
+    meta: {
+      title: "Contact"
+    }
+  },
   // {
   //   path: "/login",
   //   name: "login",

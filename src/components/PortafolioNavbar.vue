@@ -11,7 +11,7 @@ const toggleMenu = () => {
 <template>
   <div id="nav">
     <div class="nav-contain">
-      <a class="nav-brand" href="#app">Minterger</a>
+      <router-link class="nav-brand" to="/">Minterger</router-link>
       <ul class="nav-navbar" :class="{ show: ToggleMenu }">
         <li class="nav-items">
           <router-link class="nav-links" to="/">Home</router-link>
@@ -20,7 +20,7 @@ const toggleMenu = () => {
           <router-link class="nav-links" to="/proyects">Proyects</router-link>
         </li>
         <li class="nav-items">
-          <router-link class="nav-links" to="/asd">Contact Me</router-link>
+          <router-link class="nav-links" to="/contact">Contact Me</router-link>
         </li>
       </ul>
       <button @click="toggleMenu" class="nav-toggle">
@@ -53,7 +53,7 @@ const toggleMenu = () => {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 980px;
+  max-width: 960px;
 }
 
 .nav-brand {
