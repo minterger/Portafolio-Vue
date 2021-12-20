@@ -1,10 +1,17 @@
 <script setup>
-import PortafolioContain from "./components/PortafolioContain.vue";
 import ChangeTheme from "./components/ChangeTheme.vue";
+import PortafolioNavbar from "./components/PortafolioNavbar.vue";
 </script>
 
 <template>
-  <portafolio-contain />
+  <portafolio-navbar />
+  <main class="container">
+    <router-view v-slot="{ Component }">
+      <transition name="slide-fade" mode="out-in">
+        <component :is="Component"></component>
+      </transition>
+    </router-view>
+  </main>
   <change-theme />
 </template>
 
@@ -101,5 +108,35 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0px auto;
+  padding: 70px 10px 0px 10px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all .2s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>
