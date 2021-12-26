@@ -76,6 +76,9 @@ let cardAttr = reactive({
 <template>
   <div>
     <h1>Proyects</h1>
+
+    <hr />
+
     <div class="card-container">
       <card
         class="card"

@@ -43,7 +43,7 @@ const scrollToContent = () => {
           </svg>
 
           <div class="info">
-            <h2>Leonel Menci</h2>
+            <h1>Leonel Menci</h1>
             <p>
               Programador FullStack (MEVN Stack) apasionado por la tecnología y
               la programación

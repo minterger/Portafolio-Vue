@@ -8,8 +8,7 @@ import { provide, ref } from "@vue/runtime-core";
 
 let textHeader = ref("Cargando");
 
-provide("textHeader", textHeader );
-
+provide("textHeader", textHeader);
 </script>
 
 <template>
@@ -32,6 +31,7 @@ provide("textHeader", textHeader );
 
 <style>
 :root {
+  /* white theme colors */
   --white-color-bg-navbar: #f0f0f0;
   --white-color-bg: #fff;
   --white-color-bg-hover: #1f3cbfe3;
@@ -45,14 +45,33 @@ provide("textHeader", textHeader );
   --white-button-primary-bg-hover: #fff;
   --white-button-primary-text: #333;
   --white-button-primary-text-hover: #333;
+  --white-button-primary-border: #212d46;
 
   --white-button-secondary-bg: #1f3cbf;
   --white-button-secondary-bg-hover: #2a44ba;
   --white-button-secondary-text: rgb(238, 238, 238);
   --white-button-secondary-text-hover: rgb(238, 238, 238);
+  --white-button-secondary-border: #1f3cbf;
+
+  --white-button-success-bg: #1f3cbf;
+  --white-button-success-bg-hover: #2a44ba;
+  --white-button-success-text: rgb(238, 238, 238);
+  --white-button-success-text-hover: rgb(238, 238, 238);
+  --white-button-success-border: #1f3cbf;
+
+  --white-button-danger-bg: #1f3cbf;
+  --white-button-danger-bg-hover: #2a44ba;
+  --white-button-danger-text: rgb(238, 238, 238);
+  --white-button-danger-text-hover: rgb(238, 238, 238);
+  --white-button-danger-border: #1f3cbf;
 
   --white-footer-background: #1f3cbfe3;
 
+  --white-form-input-bg: #f0f0f0;
+  --white-form-input-text: #333;
+  --white-form-input-border: #212d46;
+
+  /* dark Theme Colors */
   --dark-color-bg-navbar: #030f12;
   --dark-color-bg: #0d121c;
   --dark-color-bg-hover: #121b2b;
@@ -66,13 +85,31 @@ provide("textHeader", textHeader );
   --dark-button-primary-bg-hover: #121b2b;
   --dark-button-primary-text: white;
   --dark-button-primary-text-hover: white;
+  --dark-button-primary-border: #212d46;
 
   --dark-button-secondary-bg: #1f3cbf;
   --dark-button-secondary-bg-hover: #2a44ba;
   --dark-button-secondary-text: rgb(238, 238, 238);
   --dark-button-secondary-text-hover: rgb(238, 238, 238);
+  --dark-button-secondary-border: #1f3cbf;
+
+  --dark-button-success-bg: #00800b;
+  --dark-button-success-bg-hover: #00ae0e;
+  --dark-button-success-text: rgb(238, 238, 238);
+  --dark-button-success-text-hover: rgb(238, 238, 238);
+  --dark-button-success-border: #00800b;
+
+  --dark-button-danger-bg: #cc0000;
+  --dark-button-danger-bg-hover: #dd0202;
+  --dark-button-danger-text: rgb(238, 238, 238);
+  --dark-button-danger-text-hover: rgb(238, 238, 238);
+  --dark-button-danger-border: #cc0000;
 
   --dark-footer-background: #070d13e3;
+
+  --dark-form-input-bg: #030f12;
+  --dark-form-input-text: white;
+  --dark-form-input-border: #212d46;
 }
 
 body {
@@ -89,13 +126,31 @@ body {
   --button-primary-bg-hover: var(--white-button-primary-bg-hover);
   --button-primary-text: var(--white-button-primary-text);
   --button-primary-text-hover: var(--white-button-primary-text-hover);
+  --button-primary-border: var(--white-button-primary-border);
 
   --button-secondary-bg: var(--white-button-secondary-bg);
   --button-secondary-bg-hover: var(--white-button-secondary-bg-hover);
   --button-secondary-text: var(--white-button-secondary-text);
   --button-secondary-text-hover: var(--white-button-secondary-text-hover);
+  --button-secondary-border: var(--white-button-secondary-border);
+
+  --button-success-bg: var(--white-button-success-bg);
+  --button-success-bg-hover: var(--white-button-success-bg-hover);
+  --button-success-text: var(--white-button-success-text);
+  --button-success-text-hover: var(--white-button-success-text-hover);
+  --button-success-border: var(--white-button-success-border);
+
+  --button-danger-bg: var(--white-button-danger-bg);
+  --button-danger-bg-hover: var(--white-button-danger-bg-hover);
+  --button-danger-text: var(--white-button-danger-text);
+  --button-danger-text-hover: var(--white-button-danger-text-hover);
+  --button-danger-border: var(--white-button-danger-border);
 
   --footer-background: var(--white-footer-background);
+
+  --form-input-bg: var(--white-form-input-bg);
+  --form-input-text: var(--white-form-input-text);
+  --form-input-border: var(--white-form-input-border);
 }
 
 body.dark-theme {
@@ -112,13 +167,31 @@ body.dark-theme {
   --button-primary-bg-hover: var(--dark-button-primary-bg-hover);
   --button-primary-text: var(--dark-button-primary-text);
   --button-primary-text-hover: var(--dark-button-primary-text-hover);
+  --button-primary-border: var(--dark-button-primary-border);
 
   --button-secondary-bg: var(--dark-button-secondary-bg);
   --button-secondary-bg-hover: var(--dark-button-secondary-bg-hover);
   --button-secondary-text: var(--dark-button-secondary-text);
   --button-secondary-text-hover: var(--dark-button-secondary-text-hover);
+  --button-secondary-border: var(--dark-button-secondary-border);
+
+  --button-success-bg: var(--dark-button-success-bg);
+  --button-success-bg-hover: var(--dark-button-success-bg-hover);
+  --button-success-text: var(--dark-button-success-text);
+  --button-success-text-hover: var(--dark-button-success-text-hover);
+  --button-success-border: var(--dark-button-success-border);
+
+  --button-danger-bg: var(--dark-button-danger-bg);
+  --button-danger-bg-hover: var(--dark-button-danger-bg-hover);
+  --button-danger-text: var(--dark-button-danger-text);
+  --button-danger-text-hover: var(--dark-button-danger-text-hover);
+  --button-danger-border: var(--dark-button-danger-border);
 
   --footer-background: var(--dark-footer-background);
+
+  --form-input-bg: var(--dark-form-input-bg);
+  --form-input-text: var(--dark-form-input-text);
+  --form-input-border: var(--dark-form-input-border);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -136,13 +209,31 @@ body.dark-theme {
     --button-primary-bg-hover: var(--dark-button-primary-bg-hover);
     --button-primary-text: var(--dark-button-primary-text);
     --button-primary-text-hover: var(--dark-button-primary-text-hover);
+    --button-primary-border: var(--dark-button-primary-border);
 
     --button-secondary-bg: var(--dark-button-secondary-bg);
     --button-secondary-bg-hover: var(--dark-button-secondary-bg-hover);
     --button-secondary-text: var(--dark-button-secondary-text);
     --button-secondary-text-hover: var(--dark-button-secondary-text-hover);
+    --button-secondary-border: var(--dark-button-secondary-border);
+
+    --button-success-bg: var(--dark-button-success-bg);
+    --button-success-bg-hover: var(--dark-button-success-bg-hover);
+    --button-success-text: var(--dark-button-success-text);
+    --button-success-text-hover: var(--dark-button-success-text-hover);
+    --button-success-border: var(--dark-button-success-border);
+
+    --button-danger-bg: var(--dark-button-danger-bg);
+    --button-danger-bg-hover: var(--dark-button-danger-bg-hover);
+    --button-danger-text: var(--dark-button-danger-text);
+    --button-danger-text-hover: var(--dark-button-danger-text-hover);
+    --button-danger-border: var(--dark-button-danger-border);
 
     --footer-background: var(--dark-footer-background);
+
+    --form-input-bg: var(--dark-form-input-bg);
+    --form-input-text: var(--dark-form-input-text);
+    --form-input-border: var(--dark-form-input-border);
   }
 
   body.white-theme {
@@ -159,13 +250,31 @@ body.dark-theme {
     --button-primary-bg-hover: var(--white-button-primary-bg-hover);
     --button-primary-text: var(--white-button-primary-text);
     --button-primary-text-hover: var(--white-button-primary-text-hover);
+    --button-primary-border: var(--white-button-primary-border);
 
     --button-secondary-bg: var(--white-button-secondary-bg);
     --button-secondary-bg-hover: var(--white-button-secondary-bg-hover);
     --button-secondary-text: var(--white-button-secondary-text);
     --button-secondary-text-hover: var(--white-button-secondary-text-hover);
+    --button-secondary-border: var(--white-button-secondary-border);
+
+    --button-success-bg: var(--white-button-success-bg);
+    --button-success-bg-hover: var(--white-button-success-bg-hover);
+    --button-success-text: var(--white-button-success-text);
+    --button-success-text-hover: var(--white-button-success-text-hover);
+    --button-success-border: var(--white-button-success-border);
+
+    --button-danger-bg: var(--white-button-danger-bg);
+    --button-danger-bg-hover: var(--white-button-danger-bg-hover);
+    --button-danger-text: var(--white-button-danger-text);
+    --button-danger-text-hover: var(--white-button-danger-text-hover);
+    --button-danger-border: var(--white-button-danger-border);
 
     --footer-background: var(--white-footer-background);
+
+    --form-input-bg: var(--white-form-input-bg);
+    --form-input-text: var(--white-form-input-text);
+    --form-input-border: var(--white-form-input-border);
   }
 }
 
@@ -173,11 +282,19 @@ body {
   font-family: sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+hr {
+  border: 1px dashed var(--border-color);
+  background: transparent;
+  margin: 1rem 0;
 }
 
 .container {
   max-width: 960px;
+  min-height: calc(100vh - 40px);
   margin: 0px auto;
   padding: 25px 15px 25px 15px;
 }
