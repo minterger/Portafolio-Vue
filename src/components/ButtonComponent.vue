@@ -64,4 +64,11 @@ defineProps({
   cursor: not-allowed;
 }
 
+@media screen and (max-width: 568px) {
+  .button {
+      padding: 8px 12px;
+      font-size: 1.5rem;
+  }
+}
+
 </style>
