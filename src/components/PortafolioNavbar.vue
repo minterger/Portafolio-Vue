@@ -98,11 +98,25 @@ const toggleMenu = () => {
   color: var(--color-text);
   cursor: pointer;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
 }
 
 @media (max-width: 568px) {
+  #nav {
+    height: 50px;
+  }
+
+  .nav-links {
+    font-size: 1.1rem;
+    padding: 0.8em 0em;
+  }
+
+  .nav-brand {
+    font-size: 1.5em;
+  }
+
   .nav-navbar {
     display: flex;
     position: fixed;
@@ -131,7 +145,9 @@ const toggleMenu = () => {
   }
 
   .nav-toggle {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>

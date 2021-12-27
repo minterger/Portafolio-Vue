@@ -2,6 +2,11 @@
 import { reactive } from "@vue/reactivity";
 import Card from "../components/Card.vue";
 import ButtonComponent from "../components/ButtonComponent.vue";
+import { inject } from "@vue/runtime-core";
+
+const text = inject("textHeader");
+
+text.value = "Proyects";
 
 let cards = reactive([
   {
@@ -71,6 +76,9 @@ let cardAttr = reactive({
 <template>
   <div>
     <h1>Proyects</h1>
+
+    <hr />
+
     <div class="card-container">
       <card
         class="card"
