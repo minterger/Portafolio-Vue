@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import ButtonComponent from "./ButtonComponent.vue";
 
 const formData = reactive({
@@ -7,10 +7,25 @@ const formData = reactive({
   email: "",
   message: "",
 });
+
+// validad formData.email
+const validateEmail = (email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const isValidEmail = computed(() => {
+  if (formData.email.length > 5) {
+    return !validateEmail(formData.email);
+  }
+});
+
+
+
 </script>
 
 <template>
-  <form action="">
+  <form @submit.prevent="">
     <div>
       <label for="name">Name</label>
       <input type="text" name="name" id="name" v-model="formData.name" />
@@ -18,12 +33,13 @@ const formData = reactive({
     <div>
       <label for="email">Email</label>
       <input type="email" id="email" name="email" v-model="formData.email" />
+      <span class="validEmail" v-if="isValidEmail">Escribe Un Email Valido</span>
     </div>
     <div>
       <label for="">Message</label>
       <textarea name="message" v-model="formData.message"></textarea>
     </div>
-    <button-component type="danger">Enviar</button-component>
+    <button-component class="send-button" size="lg" display="block" type="danger">Enviar</button-component>
   </form>
 </template>
 
@@ -47,4 +63,15 @@ div textarea {
   background-color: var(--form-input-bg);
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
+
+.send-button {
+  width: 100%;
+}
+
+.validEmail {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
 </style>

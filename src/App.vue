@@ -53,17 +53,17 @@ provide("textHeader", textHeader);
   --white-button-secondary-text-hover: rgb(238, 238, 238);
   --white-button-secondary-border: #1f3cbf;
 
-  --white-button-success-bg: #1f3cbf;
-  --white-button-success-bg-hover: #2a44ba;
+  --white-button-success-bg: #00800b;
+  --white-button-success-bg-hover: #00ae0e;
   --white-button-success-text: rgb(238, 238, 238);
   --white-button-success-text-hover: rgb(238, 238, 238);
-  --white-button-success-border: #1f3cbf;
+  --white-button-success-border: #00800b;
 
-  --white-button-danger-bg: #1f3cbf;
-  --white-button-danger-bg-hover: #2a44ba;
+  --white-button-danger-bg: #cc0000;
+  --white-button-danger-bg-hover: #dd0202;
   --white-button-danger-text: rgb(238, 238, 238);
   --white-button-danger-text-hover: rgb(238, 238, 238);
-  --white-button-danger-border: #1f3cbf;
+  --white-button-danger-border: #cc0000;
 
   --white-footer-background: #1f3cbfe3;
 

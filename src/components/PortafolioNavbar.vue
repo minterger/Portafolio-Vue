@@ -1,17 +1,33 @@
 <script setup>
 import { ref } from "@vue/reactivity";
+import { watch } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 let ToggleMenu = ref(false);
 
 const toggleMenu = () => {
   ToggleMenu.value = !ToggleMenu.value;
 };
+
+// observar route si canvia revisar si el menu esta abierto y cerrarlo
+
+watch(
+  () => route.path,
+  () => {
+    if (ToggleMenu.value) {
+      ToggleMenu.value = false;
+    }
+  }
+);
+
 </script>
 
 <template>
   <div id="nav">
     <div class="nav-contain">
-      <router-link class="nav-brand" to="/">Minterger</router-link>
+      <router-link class="nav-brand" to="/">Portafolio</router-link>
       <ul class="nav-navbar" :class="{ show: ToggleMenu }">
         <li class="nav-items">
           <router-link class="nav-links" to="/">Home</router-link>

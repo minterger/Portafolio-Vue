@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { ref } from "@vue/reactivity"
+
+const props = defineProps({
   type: {
     type: String,
     default: "primary",
@@ -15,27 +17,44 @@ defineProps({
   link: {
     type: String,
   },
+  display: {
+    type: String,
+    default: 'inline-block'
+  },
 })
+
+const ButtonDisplay = ref(props.display)
 </script>
 
 <template>
-  <a v-if="link" class="button" :class="[size, disabled === true ? 'disabled' : '', type]" :href="link">
+  <a v-if="props.link" class="button" :class="[props.size, props.disabled === true ? 'disabled' : '', props.type]" :href="props.link">
     <slot></slot>
   </a>
-  <button v-else class="button" :class="[size, disabled === true ? 'disabled' : '', type]">
+  <button v-else class="button" :class="[props.size, props.disabled === true ? 'disabled' : '', props.type]">
     <slot></slot>
   </button>
 </template>
 
 <style scoped>
 .button {
-  display: inline;
+  display: v-bind(ButtonDisplay);
   border: 1px solid;
-  padding: 5px 10px;
   text-align: center;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+
+.sm {
+  padding: 3px 5px;
+  } 
+
+.md {
+  padding: 5px 10px;
+}
+
+.lg {
+  padding: 10px 20px;
 }
 
 .primary {

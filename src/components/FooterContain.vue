@@ -4,7 +4,7 @@
   <footer>
     <div class="footer-copyright">
       <p>
-        © 2020 Copyright:
+        © 2021 Copyright:
         <a href="https://www.linkedin.com/in/leonel-menci/"> Leonel Menci </a>
       </p>
     </div>
