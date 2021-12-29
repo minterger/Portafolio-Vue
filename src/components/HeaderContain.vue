@@ -4,9 +4,7 @@ import { inject } from "@vue/runtime-core";
 
 const text = inject("textHeader");
 
-const backgroundImage = ref(
-  `url("/background-header.jpeg")`
-);
+const backgroundImage = ref(`url("/background-header.jpeg")`);
 
 // slow scroll animation
 const scrollToContent = () => {
@@ -20,6 +18,15 @@ const scrollToContent = () => {
     <transition name="fade" mode="out-in">
       <div :key="text">
         <div class="perfil">
+          <div class="info">
+            <h1>Leonel Menci</h1>
+            <p>
+              Programador FullStack (MEVN Stack) apasionado por la tecnología y
+              la programación
+            </p>
+            <p>Aca podras ver mi informacion, proyectos y formas de contactarme</p>
+          </div>
+
           <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <clipPath id="user-space" clipPathUnits="userSpaceOnUse">
@@ -41,14 +48,6 @@ const scrollToContent = () => {
               clip-path="url(#user-space)"
             />
           </svg>
-
-          <div class="info">
-            <h1>Leonel Menci</h1>
-            <p>
-              Programador FullStack (MEVN Stack) apasionado por la tecnología y
-              la programación
-            </p>
-          </div>
         </div>
 
         <div class="contain-more">
@@ -91,7 +90,7 @@ const scrollToContent = () => {
   background-image: v-bind(backgroundImage);
   background-size: cover;
   background-position: center;
-  height: calc(100vh - var(--height-nav));
+  min-height: calc(100vh - var(--height-nav));
 }
 
 .contain-more {
@@ -136,30 +135,34 @@ const scrollToContent = () => {
 .perfil {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 90px;
 }
 
 .perfil .info {
-  margin-top: 50px;
+  margin: auto 30px;
   max-width: 400px;
 }
 
 .perfil svg {
   width: 350px;
+  margin-right: 30px;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 630px) {
   .perfil {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
   }
 
   .perfil .info {
-    margin-top: 0px;
+    margin: 0;
     text-align: center;
   }
 
   .perfil svg {
-    width: 250px;
+    width: 270px;
+    margin: 0;
   }
 }
 </style>
