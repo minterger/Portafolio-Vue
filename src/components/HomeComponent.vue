@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from "@vue/reactivity";
-import { m } from "../../dist/assets/vendor.839f2612";
 
 const stacks = ref([
   {
