@@ -9,7 +9,7 @@ text.value = "Home";
 
 <template>
   <div>
-    <h1>Home</h1>
+    <h1>{{text}}</h1>
 
     <hr />
 

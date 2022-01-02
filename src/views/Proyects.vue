@@ -9,7 +9,7 @@ import pelislatino from "../assets/proyectsImg/pelislatino.png";
 
 const text = inject("textHeader");
 
-text.value = "Proyects";
+text.value = "Proyectos";
 
 let cards = reactive([
   {
@@ -88,7 +88,7 @@ let cardAttr = reactive({
 
 <template>
   <div>
-    <h1>Proyects</h1>
+    <h1>{{text}}</h1>
 
     <hr />
 

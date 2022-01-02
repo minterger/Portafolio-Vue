@@ -32,10 +32,10 @@ watch(
           <router-link class="nav-links" to="/">Home</router-link>
         </li>
         <li class="nav-items">
-          <router-link class="nav-links" to="/proyects">Proyects</router-link>
+          <router-link class="nav-links" to="/proyects">Proyectos</router-link>
         </li>
         <li class="nav-items">
-          <router-link class="nav-links" to="/contact">Contact Me</router-link>
+          <router-link class="nav-links" to="/contact">Contactar</router-link>
         </li>
         <li class="nav-items">
           <a class="nav-links important" target="_blank" href="/Curriculum.pdf">
