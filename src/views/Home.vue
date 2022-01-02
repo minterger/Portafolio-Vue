@@ -1,11 +1,10 @@
 <script setup>
 import { inject } from "@vue/runtime-core";
-import HelloWorld from '../components/HelloWorld.vue';
+import HomeComponent from "../components/HomeComponent.vue";
 
-const text = inject('textHeader');
+const text = inject("textHeader");
 
-text.value = 'Home';
-
+text.value = "Home";
 </script>
 
 <template>
@@ -13,8 +12,7 @@ text.value = 'Home';
     <h1>Home</h1>
 
     <hr />
-    
-    <hello-world></hello-world>
-  <hello-world />
+
+    <home-component />
   </div>
 </template>

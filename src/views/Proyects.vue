@@ -2,7 +2,8 @@
 import { reactive } from "@vue/reactivity";
 import Card from "../components/Card.vue";
 import ButtonComponent from "../components/ButtonComponent.vue";
-import { inject } from "@vue/runtime-core";
+import Modal from "../components/Modal.vue";
+import { inject, provide } from "@vue/runtime-core";
 
 import pelislatino from "../assets/proyectsImg/pelislatino.png";
 
@@ -77,6 +78,8 @@ let cards = reactive([
   },
 ]);
 
+provide("proyects", cards);
+
 let cardAttr = reactive({
   transition: "scale",
   buttonGitType: "secondary",
@@ -95,14 +98,14 @@ let cardAttr = reactive({
         :title="card.title"
         :description="card.description"
         :image="card.image"
+        :id="index"
+        :hoverlink="true"
         transition="scale"
         v-for="(card, index) in cards"
         :key="index"
       >
         <template v-slot:footer>
-          <button-component
-            :link="card.github"
-            :type="cardAttr.buttonGitType"
+          <button-component :link="card.github" :type="cardAttr.buttonGitType"
             ><i class="bx bxl-github"></i
           ></button-component>
           <button-component :link="card.link"
@@ -111,6 +114,7 @@ let cardAttr = reactive({
         </template>
       </card>
     </div>
+    <modal />
   </div>
 </template>
 

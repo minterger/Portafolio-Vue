@@ -21,7 +21,6 @@ watch(
     }
   }
 );
-
 </script>
 
 <template>
@@ -37,6 +36,11 @@ watch(
         </li>
         <li class="nav-items">
           <router-link class="nav-links" to="/contact">Contact Me</router-link>
+        </li>
+        <li class="nav-items">
+          <a class="nav-links important" target="_blank" href="/Curriculum.pdf">
+            Curriculum
+          </a>
         </li>
       </ul>
       <button @click="toggleMenu" class="nav-toggle">
@@ -107,6 +111,16 @@ watch(
   background-color: var(--color-bg-hover);
 }
 
+.important {
+  color: var(--button-secondary-text);
+  background-color: var(--button-secondary-bg);
+}
+
+.important:hover {
+  color: var(--button-secondary-text-hover);
+  background-color: var(--button-secondary-bg-hover);
+}
+
 .nav-toggle {
   background: none;
   display: none;
@@ -127,6 +141,8 @@ watch(
   .nav-links {
     font-size: 1.1rem;
     padding: 0.8em 0em;
+    display: block;
+    text-align: center;
   }
 
   .nav-brand {
@@ -138,7 +154,7 @@ watch(
     position: fixed;
     background: var(--color-bg-navbar);
     top: 40px;
-    right: 0;
+    right: 0px;
     width: 100vw;
     height: 0;
     flex-direction: column;
@@ -153,11 +169,6 @@ watch(
 
   .nav-items {
     margin: 10px 2px;
-  }
-
-  .nav-links {
-    display: block;
-    text-align: center;
   }
 
   .nav-toggle {
