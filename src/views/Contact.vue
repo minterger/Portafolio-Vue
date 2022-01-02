@@ -4,12 +4,12 @@ import { inject } from "@vue/runtime-core";
 
 const text = inject("textHeader");
 
-text.value = "Contact Me";
+text.value = "Contactar";
 </script>
 
 <template>
   <div>
-    <h1>Contact Me</h1>
+    <h1>{{ text }}</h1>
 
     <hr />
 
