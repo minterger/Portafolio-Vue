@@ -1,17 +1,32 @@
 <script setup>
 import { ref } from "@vue/reactivity";
+import { watch } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 let ToggleMenu = ref(false);
 
 const toggleMenu = () => {
   ToggleMenu.value = !ToggleMenu.value;
 };
+
+// observar route si canvia revisar si el menu esta abierto y cerrarlo
+
+watch(
+  () => route.path,
+  () => {
+    if (ToggleMenu.value) {
+      ToggleMenu.value = false;
+    }
+  }
+);
 </script>
 
 <template>
   <div id="nav">
     <div class="nav-contain">
-      <router-link class="nav-brand" to="/">Minterger</router-link>
+      <router-link class="nav-brand" to="/">Portafolio</router-link>
       <ul class="nav-navbar" :class="{ show: ToggleMenu }">
         <li class="nav-items">
           <router-link class="nav-links" to="/">Home</router-link>
@@ -21,6 +36,11 @@ const toggleMenu = () => {
         </li>
         <li class="nav-items">
           <router-link class="nav-links" to="/contact">Contact Me</router-link>
+        </li>
+        <li class="nav-items">
+          <a class="nav-links important" target="_blank" href="/Curriculum.pdf">
+            Curriculum
+          </a>
         </li>
       </ul>
       <button @click="toggleMenu" class="nav-toggle">
@@ -91,6 +111,16 @@ const toggleMenu = () => {
   background-color: var(--color-bg-hover);
 }
 
+.important {
+  color: var(--button-secondary-text);
+  background-color: var(--button-secondary-bg);
+}
+
+.important:hover {
+  color: var(--button-secondary-text-hover);
+  background-color: var(--button-secondary-bg-hover);
+}
+
 .nav-toggle {
   background: none;
   display: none;
@@ -111,6 +141,8 @@ const toggleMenu = () => {
   .nav-links {
     font-size: 1.1rem;
     padding: 0.8em 0em;
+    display: block;
+    text-align: center;
   }
 
   .nav-brand {
@@ -122,7 +154,7 @@ const toggleMenu = () => {
     position: fixed;
     background: var(--color-bg-navbar);
     top: 40px;
-    right: 0;
+    right: 0px;
     width: 100vw;
     height: 0;
     flex-direction: column;
@@ -137,11 +169,6 @@ const toggleMenu = () => {
 
   .nav-items {
     margin: 10px 2px;
-  }
-
-  .nav-links {
-    display: block;
-    text-align: center;
   }
 
   .nav-toggle {

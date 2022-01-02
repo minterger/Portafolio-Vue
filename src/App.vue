@@ -32,10 +32,13 @@ provide("textHeader", textHeader);
 <style>
 :root {
   /* white theme colors */
+  --white-color-bg-modal: #fff;
+
   --white-color-bg-navbar: #f0f0f0;
   --white-color-bg: #fff;
   --white-color-bg-hover: #1f3cbfe3;
   --white-color-text: rgb(51, 51, 51);
+  --white-color-text-secondary: #1f3cbfe3;
   --white-color-text-hover: rgb(255, 255, 255);
   --white-color-text-primary: #333;
 
@@ -53,17 +56,17 @@ provide("textHeader", textHeader);
   --white-button-secondary-text-hover: rgb(238, 238, 238);
   --white-button-secondary-border: #1f3cbf;
 
-  --white-button-success-bg: #1f3cbf;
-  --white-button-success-bg-hover: #2a44ba;
+  --white-button-success-bg: #00800b;
+  --white-button-success-bg-hover: #00ae0e;
   --white-button-success-text: rgb(238, 238, 238);
   --white-button-success-text-hover: rgb(238, 238, 238);
-  --white-button-success-border: #1f3cbf;
+  --white-button-success-border: #00800b;
 
-  --white-button-danger-bg: #1f3cbf;
-  --white-button-danger-bg-hover: #2a44ba;
+  --white-button-danger-bg: #cc0000;
+  --white-button-danger-bg-hover: #dd0202;
   --white-button-danger-text: rgb(238, 238, 238);
   --white-button-danger-text-hover: rgb(238, 238, 238);
-  --white-button-danger-border: #1f3cbf;
+  --white-button-danger-border: #cc0000;
 
   --white-footer-background: #1f3cbfe3;
 
@@ -72,10 +75,13 @@ provide("textHeader", textHeader);
   --white-form-input-border: #212d46;
 
   /* dark Theme Colors */
+  --dark-color-bg-modal: #0d121c;
+
   --dark-color-bg-navbar: #030f12;
   --dark-color-bg: #0d121c;
   --dark-color-bg-hover: #121b2b;
   --dark-color-text: rgb(218, 218, 218);
+  --dark-color-text-secondary: #2474ff;
   --dark-color-text-hover: rgb(255, 255, 255);
   --dark-color-text-primary: white;
 
@@ -113,10 +119,13 @@ provide("textHeader", textHeader);
 }
 
 body {
+  --color-bg-modal: var(--white-color-bg-modal);
+
   --color-bg-navbar: var(--white-color-bg-navbar);
   --color-bg: var(--white-color-bg);
   --color-bg-hover: var(--white-color-bg-hover);
   --color-text: var(--white-color-text);
+  --color-text-secondary: var(--white-color-text-secondary);
   --color-text-hover: var(--white-color-text-hover);
   --color-text-primary: var(--white-color-text-primary);
 
@@ -154,10 +163,13 @@ body {
 }
 
 body.dark-theme {
+  --color-bg-modal: var(--dark-color-bg-modal);
+
   --color-bg-navbar: var(--dark-color-bg-navbar);
   --color-bg: var(--dark-color-bg);
   --color-bg-hover: var(--dark-color-bg-hover);
   --color-text: var(--dark-color-text);
+  --color-text-secondary: var(--dark-color-text-secondary);
   --color-text-hover: var(--dark-color-text-hover);
   --color-text-primary: var(--dark-color-text-primary);
 
@@ -196,10 +208,13 @@ body.dark-theme {
 
 @media (prefers-color-scheme: dark) {
   body {
+    --color-bg-modal: var(--dark-color-bg-modal);
+
     --color-bg-navbar: var(--dark-color-bg-navbar);
     --color-bg: var(--dark-color-bg);
     --color-bg-hover: var(--dark-color-bg-hover);
     --color-text: var(--dark-color-text);
+    --color-text-secondary: var(--dark-color-text-secondary);
     --color-text-hover: var(--dark-color-text-hover);
     --color-text-primary: var(--dark-color-text-primary);
 
@@ -237,10 +252,13 @@ body.dark-theme {
   }
 
   body.white-theme {
+    --color-bg-modal: var(--white-color-bg-modal);
+
     --color-bg-navbar: var(--white-color-bg-navbar);
     --color-bg: var(--white-color-bg);
     --color-bg-hover: var(--white-color-bg-hover);
     --color-text: var(--white-color-text);
+    --color-text-secondary: var(--white-color-text-secondary);
     --color-text-hover: var(--white-color-text-hover);
     --color-text-primary: var(--white-color-text-primary);
 
@@ -284,6 +302,14 @@ body {
   color: var(--color-text);
   transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out,
     color 0.2s ease-in-out;
+}
+
+.text-primary {
+  color: var(--color-text);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
 }
 
 hr {

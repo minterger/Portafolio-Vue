@@ -2,7 +2,10 @@
 import { reactive } from "@vue/reactivity";
 import Card from "../components/Card.vue";
 import ButtonComponent from "../components/ButtonComponent.vue";
-import { inject } from "@vue/runtime-core";
+import Modal from "../components/Modal.vue";
+import { inject, provide } from "@vue/runtime-core";
+
+import pelislatino from "../assets/proyectsImg/pelislatino.png";
 
 const text = inject("textHeader");
 
@@ -10,10 +13,19 @@ text.value = "Proyects";
 
 let cards = reactive([
   {
+    title: "PelisLatino",
+    description:
+      "Aplicacion web que permite ver las peliculas mas recientes de la web de pelislatino.ga",
+    image: pelislatino,
+    github: "https://github.com/minterger/app-peliculas-Vue",
+    link: "https://pelislatino.ga",
+  },
+  {
     title: "Card Title",
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
   {
@@ -21,6 +33,7 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
   {
@@ -28,6 +41,7 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
   {
@@ -35,6 +49,7 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
   {
@@ -42,6 +57,7 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
   {
@@ -49,6 +65,7 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
   {
@@ -56,16 +73,12 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
-    link: "#",
-  },
-  {
-    title: "Card Title",
-    description:
-      "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
-    image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    github: "#",
     link: "#",
   },
 ]);
+
+provide("proyects", cards);
 
 let cardAttr = reactive({
   transition: "scale",
@@ -85,14 +98,14 @@ let cardAttr = reactive({
         :title="card.title"
         :description="card.description"
         :image="card.image"
+        :id="index"
+        :hoverlink="true"
         transition="scale"
         v-for="(card, index) in cards"
         :key="index"
       >
         <template v-slot:footer>
-          <button-component
-            :type="cardAttr.buttonGitType"
-            @click="card.title = 'New Title'"
+          <button-component :link="card.github" :type="cardAttr.buttonGitType"
             ><i class="bx bxl-github"></i
           ></button-component>
           <button-component :link="card.link"
@@ -101,6 +114,7 @@ let cardAttr = reactive({
         </template>
       </card>
     </div>
+    <modal />
   </div>
 </template>
 
