@@ -6,6 +6,9 @@ import Modal from "../components/Modal.vue";
 import { inject, provide } from "@vue/runtime-core";
 
 import pelislatino from "../assets/proyectsImg/pelislatino.png";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const text = inject("textHeader");
 
@@ -78,17 +81,24 @@ let cards = reactive([
   },
 ]);
 
-provide("proyects", cards);
+const openModal = (id) => {
+  router.push({
+    hash: `#${id}`,
+  });
+};
+
+provide("modalInfo", cards);
 
 let cardAttr = reactive({
   transition: "scale",
   buttonGitType: "secondary",
+  buttonOpenModal: "secondary",
 });
 </script>
 
 <template>
   <div>
-    <h1>{{text}}</h1>
+    <h1>{{ text }}</h1>
 
     <hr />
 
@@ -98,19 +108,21 @@ let cardAttr = reactive({
         :title="card.title"
         :description="card.description"
         :image="card.image"
-        :id="index"
         :hoverlink="true"
         transition="scale"
         v-for="(card, index) in cards"
         :key="index"
       >
         <template v-slot:footer>
-          <button-component :link="card.github" :type="cardAttr.buttonGitType"
-            ><i class="bx bxl-github"></i
-          ></button-component>
           <button-component :link="card.link"
             ><i class="bx bx-link-external"></i
           ></button-component>
+          <button-component :link="card.github" :type="cardAttr.buttonGitType"
+            ><i class="bx bxl-github"></i
+          ></button-component>
+          <button-component :type="cardAttr.buttonOpenModal" @click="openModal(index)">
+            <i class="bx bx-plus"></i>
+          </button-component>
         </template>
       </card>
     </div>

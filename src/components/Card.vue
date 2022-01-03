@@ -1,9 +1,6 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
 
-const route = useRoute();
-const router = useRouter();
-
 const props = defineProps({
   image: {
     type: String,
@@ -25,20 +22,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  id: {
-    type: String,
-    default: "",
-  },
 });
-
-const openModal = () => {
-  // asignar el id del proyecto al route hash
-  if (props.hoverlink)
-  // router puth to hash
-    router.push({
-      hash: '#' + props.id,
-    });
-};
 </script>
 
 <template>
@@ -46,7 +30,7 @@ const openModal = () => {
     class="card"
     :class="[props.transition, props.transition !== '' ? 'transition' : '']"
   >
-    <div v-if="props.image" :class="{ open: props.hoverlink, overlay: props.hoverlink }" @click="openModal">
+    <div v-if="props.image" @click="openModal">
       <img :src="props.image" alt="" />
     </div>
     <div class="content" v-if="props.title || props.description">
@@ -100,33 +84,5 @@ img {
   border-top: 1px solid var(--border-color);
   gap: 10px;
   padding: 10px 10px;
-}
-
-.overlay {
-  position: relative;
-  overflow: hidden;
-}
-
-/* img overlay */
-.overlay::after {
-  content: "Ver más";
-  font-size: 1.1rem;
-  color: #fff;
-  position: absolute;
-  display: grid;
-  inset: 0;
-  bottom: 4px;
-  place-items: center;
-  background: rgba(33, 49, 92, 0.5);
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.overlay:hover::after {
-  transform: translateY(0);
-}
-
-.open {
-  cursor: pointer;
 }
 </style>

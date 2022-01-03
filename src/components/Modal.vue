@@ -5,11 +5,11 @@ import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
 
-const proyects = inject("proyects");
+const modalInfo = inject("modalInfo");
 
 const modalClose = ref(true);
 
-const proyectInfo = ref({});
+const info = ref({});
 
 const closeModal = () => {
   modalClose.value = true;
@@ -20,18 +20,18 @@ const closeModal = () => {
 
 const openModal = () => {
   modalClose.value = false;
-  proyectInfo.value = proyects[route.hash.slice(1)];
+  info.value = modalInfo[route.hash.slice(1)];
 };
 
 if (route.hash) {
-  openModal()
+  openModal();
 }
 
 watch(
   () => route.hash,
   () => {
     if (route.hash) {
-      openModal()
+      openModal();
     }
   }
 );
@@ -52,9 +52,21 @@ watch(
             d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
           ></path></svg
       ></span>
-      <h3>{{ proyectInfo.title }}</h3>
+      <h2 v-if="info.title">{{ info.title }}</h2>
 
-      <p>{{ proyectInfo.description }}</p>
+      <div v-if="info.description">
+        <h4>Descripción:</h4>
+        <p>{{ info.description }}</p>
+      </div>
+
+      <div v-if="info.items">
+        <h4>Tecnologias usadas:</h4>
+        <ul>
+          <li v-for="(item, index) in info.items" :key="index">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -84,7 +96,7 @@ watch(
   border: 1px solid var(--border-color);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   width: 90%;
-  max-width: 960px;
+  max-width: 730px;
   height: auto;
   max-height: 90vh;
   overflow: auto;
