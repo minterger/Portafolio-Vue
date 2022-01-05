@@ -320,7 +320,7 @@ hr {
 
 .container {
   max-width: 960px;
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 43px);
   margin: 0px auto;
   padding: 25px 15px 25px 15px;
 }
