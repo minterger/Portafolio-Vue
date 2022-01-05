@@ -81,7 +81,7 @@ text.value = "Contactar";
 .social-media {
   margin-top: 1rem;
   display: flex;
-  gap: 5px;
+  gap: 8px;
 }
 
 .social-media a svg {
