@@ -93,7 +93,6 @@ const stacks = ref([
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: var(--color-bg);
   border: 1px solid var(--border-color);
   padding: 20px;
   font-size: 20px;
