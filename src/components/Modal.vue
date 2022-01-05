@@ -59,6 +59,10 @@ watch(
         <p>{{ info.description }}</p>
       </div>
 
+      <div>
+        <img :src="info.image" alt="" />
+      </div>
+
       <div v-if="info.items">
         <h4>Tecnologias usadas:</h4>
         <ul>
@@ -90,7 +94,7 @@ watch(
 
 .modal {
   position: relative;
-  margin: 0 8px;
+  margin: 0px 8px;
   background: var(--color-bg-modal);
   border-radius: 5px;
   border: 1px solid var(--border-color);
@@ -98,14 +102,28 @@ watch(
   width: 90%;
   max-width: 730px;
   height: auto;
-  max-height: 90vh;
-  overflow: auto;
+  max-height: 85vh;
+  overflow-y: auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   transition: all 0.2s ease-in-out;
+}
+
+.modal h2 {
+  margin: auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal div img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.modal ul {
+  list-style: square;
+  padding-left: 20px;
 }
 
 .show {

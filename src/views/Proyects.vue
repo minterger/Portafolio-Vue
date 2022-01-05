@@ -20,6 +20,14 @@ let cards = reactive([
     description:
       "Aplicacion web que permite ver las peliculas mas recientes de la web de pelislatino.ga",
     image: pelislatino,
+    items: [
+      "vue.js",
+      "axios",
+      "vuex",
+      "vue-router",
+      "bootstrap",
+      "boxicons",
+    ],
     github: "https://github.com/minterger/app-peliculas-Vue",
     link: "https://pelislatino.ga",
   },
