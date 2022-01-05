@@ -1,10 +1,12 @@
 <script setup>
 import { ref } from "@vue/reactivity";
 import { inject } from "@vue/runtime-core";
+import imgPerfil from "../assets/Perfil.webp";
+import background from "../assets/background-header.jpeg";
 
 const text = inject("textHeader");
 
-const backgroundImage = ref(`url("/background-header.jpeg")`);
+const backgroundImage = ref(`url("${background}")`);
 
 // slow scroll animation
 const scrollToContent = () => {
@@ -44,7 +46,7 @@ const scrollToContent = () => {
               preserveAspectRatio="xMinYMid meet"
               x="25"
               y="15"
-              xlink:href="https://gpxstore.com/wp-content/uploads/2020/02/Perfil--e1580795304170-400x400.jpeg"
+              :xlink:href="imgPerfil"
               clip-path="url(#user-space)"
             />
           </svg>
@@ -125,7 +127,7 @@ const scrollToContent = () => {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   100% {
     transform: translateY(0);
