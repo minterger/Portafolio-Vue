@@ -63,7 +63,7 @@ watch(
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 42px;
   box-sizing: border-box;
   transition: background 0.2s ease-in-out;
 }
