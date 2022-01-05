@@ -36,6 +36,8 @@ let cards = reactive([
     description:
       "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
     image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
+    disableImg: true,
+    items: ["vue.js", "axios", "vuex", "vue-router", "bootstrap", "boxicons"],
     github: "#",
     link: "#",
   },

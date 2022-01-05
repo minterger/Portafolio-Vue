@@ -59,7 +59,8 @@ watch(
         <p>{{ info.description }}</p>
       </div>
 
-      <div>
+      <div v-if="(!info.disableImg && info.image)">
+        <h4>Imagen:</h4>
         <img :src="info.image" alt="" />
       </div>
 
