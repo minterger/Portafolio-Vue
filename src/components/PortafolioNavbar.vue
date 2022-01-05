@@ -167,6 +167,10 @@ watch(
     transition: all 0.3s ease;
   }
 
+  .nav-items:last-child {
+    margin: 10px 2px;
+  }
+
   .nav-items {
     margin: 10px 2px;
   }

@@ -41,17 +41,7 @@ watch(
   <div class="container-modal" :class="{ show: !modalClose }">
     <div class="modal" :class="{ 'modal-close': modalClose }">
       <span class="close" @click.prevent="closeModal"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="5 5 14 14"
-          style="fill: #fff; msfilter: "
-        >
-          <path
-            d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
-          ></path></svg
-      ></span>
+        ><i class='bx bx-x'></i></span>
       <h2 v-if="info.title">{{ info.title }}</h2>
 
       <div v-if="info.description">
@@ -111,9 +101,12 @@ watch(
 
 .modal h2 {
   margin: auto;
-  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+}
+
+.modal h4 {
+  color: var(--color-text-secondary);
 }
 
 .modal div img {
@@ -133,25 +126,37 @@ watch(
 }
 
 .modal-close {
-  transform: translateY(-100vh);
+  transform: translateY(-5vh);
 }
 
 .close {
   position: absolute;
+  font-size: 30px;
   top: 10px;
   right: 10px;
-  width: 20px;
-  height: 20px;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
   font-weight: bold;
-  color: var(--color-text-primary);
-  padding: 10px;
+  color: #fff;
   border-radius: 50px;
   background: red;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
+}
+
+.close:hover {
+  background: rgb(247, 52, 52);
+  transition: background 0.2s ease-in-out, scale 0.2s ease-in-out;
+
+}
+
+.close:active {
+  scale: 0.9;
+  transition: scale 0.2s ease-in-out;
 }
 </style>

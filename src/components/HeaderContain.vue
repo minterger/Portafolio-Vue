@@ -26,7 +26,9 @@ const scrollToContent = () => {
               Programador FullStack (MEVN Stack) apasionado por la tecnología y
               la programación
             </p>
-            <p>Aca podras ver mi informacion, proyectos y formas de contactarme</p>
+            <p>
+              Aca podras ver mi informacion, proyectos y formas de contactarme
+            </p>
           </div>
 
           <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
@@ -55,21 +57,7 @@ const scrollToContent = () => {
         <div class="contain-more">
           <h1>{{ text }}</h1>
 
-          <svg
-            class="arrow"
-            @click="scrollToContent"
-            xmlns="http://www.w3.org/2000/svg"
-            width="60"
-            height="60"
-            viewBox="0 2 25 25"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
+          <i class="bx bx-chevron-down arrow" @click="scrollToContent"></i>
         </div>
       </div>
     </transition>
@@ -113,6 +101,10 @@ const scrollToContent = () => {
 }
 
 .arrow {
+  height: 60px;
+  font-size: 4rem;
+  margin: auto;
+
   color: white;
   background: transparent;
   border: none;
@@ -124,13 +116,13 @@ const scrollToContent = () => {
 /* keyframe arrow */
 @keyframes arrow-down {
   0% {
-    transform: translateY(0);
+    transform: translateY(-8px);
   }
   50% {
-    transform: translateY(12px);
+    transform: translateY(4px);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(-8px);
   }
 }
 
