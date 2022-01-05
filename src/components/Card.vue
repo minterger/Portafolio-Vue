@@ -4,7 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 const props = defineProps({
   image: {
     type: String,
-    default: "https://picsum.photos/200",
+    // default: "https://picsum.photos/400/225",
   },
   title: {
     type: String,
