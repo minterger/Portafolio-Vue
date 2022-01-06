@@ -20,12 +20,43 @@ const isValidEmail = computed(() => {
   }
 });
 
+const sendEmail = async () => {
+  if ((formData.name.length > 0 && formData.email.length > 0 && formData.message.length > 0) && validateEmail(formData.email)) {
+    try {
+      const response = await fetch("https://email-sender-minterger.vercel.app/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      if (response.status === 200) {
+        formData.name = "";
+        formData.email = "";
+        formData.message = "";
+
+        alert("Email enviado con exito!");
+      }
+    } catch (error) {
+      console.log(error);
+
+      alert("Error Enviando el email");
+    }
+  } else {
+    alert("Por favor completa el formulario");
+  }
+};
+
 
 
 </script>
 
 <template>
-  <form @submit.prevent="">
+  <form @submit.prevent="sendEmail">
     <div>
       <label for="name">Name</label>
       <input type="text" name="name" id="name" v-model="formData.name" />
