@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, reactive } from "vue";
+import { computed, inject, reactive, watch } from "vue";
 import ButtonComponent from "./ButtonComponent.vue";
 
 let notifications = inject("notifications");
@@ -10,9 +10,23 @@ const formData = reactive({
   message: "",
 });
 
+const limpiarhtml = (str) => {
+  return str.replace(/<\/?[^>]+(>|$)/g, "");
+};
+
+watch(
+  () => formData,
+  () => {
+    formData.name = limpiarhtml(formData.name);
+    formData.message = limpiarhtml(formData.message);
+  },
+  { immediate: true }
+);
+
 // validad formData.email
 const validateEmail = (email) => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
@@ -23,19 +37,27 @@ const isValidEmail = computed(() => {
 });
 
 const sendEmail = async () => {
-  if ((formData.name.length > 0 && formData.email.length > 0 && formData.message.length > 0) && validateEmail(formData.email)) {
+  if (
+    formData.name.length > 0 &&
+    formData.email.length > 0 &&
+    formData.message.length > 0 &&
+    validateEmail(formData.email)
+  ) {
     try {
-      const response = await fetch("https://email-sender-minterger.vercel.app/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
+      const response = await fetch(
+        "https://email-sender-minterger.vercel.app/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
+        }
+      );
       if (response.status === 200) {
         formData.name = "";
         formData.email = "";
@@ -64,9 +86,6 @@ const sendEmail = async () => {
     });
   }
 };
-
-
-
 </script>
 
 <template>
@@ -78,13 +97,21 @@ const sendEmail = async () => {
     <div>
       <label for="email">Email</label>
       <input type="email" id="email" name="email" v-model="formData.email" />
-      <span class="validEmail" v-if="isValidEmail">Escribe Un Email Valido</span>
+      <span class="validEmail" v-if="isValidEmail"
+        >Escribe Un Email Valido</span
+      >
     </div>
     <div>
       <label for="">Message</label>
       <textarea name="message" v-model="formData.message"></textarea>
     </div>
-    <button-component class="send-button" size="lg" display="block" type="danger">Enviar</button-component>
+    <button-component
+      class="send-button"
+      size="lg"
+      display="block"
+      type="danger"
+      >Enviar</button-component
+    >
   </form>
 </template>
 
@@ -106,7 +133,8 @@ div textarea {
   border: 1px solid var(--form-input-border);
   border-radius: 4px;
   background-color: var(--form-input-bg);
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
 .send-button {
@@ -118,5 +146,4 @@ div textarea {
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
-
 </style>
