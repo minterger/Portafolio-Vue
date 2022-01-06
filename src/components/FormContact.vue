@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, reactive, watch } from "vue";
+import { computed, inject, reactive } from "vue";
 import ButtonComponent from "./ButtonComponent.vue";
 
 let notifications = inject("notifications");
@@ -14,14 +14,13 @@ const limpiarhtml = (str) => {
   return str.replace(/<\/?[^>]+(>|$)/g, "");
 };
 
-watch(
-  () => formData,
-  () => {
-    formData.name = limpiarhtml(formData.name);
-    formData.message = limpiarhtml(formData.message);
-  },
-  { immediate: true }
-);
+let nameLimpio = computed(() => {
+  return limpiarhtml(formData.name);
+});
+
+let messageLimpio = computed(() => {
+  return limpiarhtml(formData.message);
+});
 
 // validad formData.email
 const validateEmail = (email) => {
@@ -52,9 +51,9 @@ const sendEmail = async () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: formData.name,
+            name: nameLimpio.value,
             email: formData.email,
-            message: formData.message,
+            message: messageLimpio.value,
           }),
         }
       );
