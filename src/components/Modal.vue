@@ -41,26 +41,31 @@ watch(
   <div class="container-modal" :class="{ show: !modalClose }">
     <div class="modal" :class="{ 'modal-close': modalClose }">
       <span class="close" @click.prevent="closeModal"
-        ><i class='bx bx-x'></i></span>
-      <h2 v-if="info.title">{{ info.title }}</h2>
-
-      <div v-if="info.description">
-        <h4>Descripción:</h4>
-        <p>{{ info.description }}</p>
+        ><i class="bx bx-x"></i
+      ></span>
+      <div class="modal-header">
+        <h2 v-if="info.title">{{ info.title }}</h2>
       </div>
 
-      <div v-if="(!info.disableImg && info.image)">
-        <h4>Imagen:</h4>
-        <img :src="info.image" alt="" />
-      </div>
+      <div class="modal-body">
+        <div v-if="info.description">
+          <h4>Descripción:</h4>
+          <p>{{ info.description }}</p>
+        </div>
 
-      <div v-if="info.items">
-        <h4>Tecnologias usadas:</h4>
-        <ul>
-          <li v-for="(item, index) in info.items" :key="index">
-            {{ item }}
-          </li>
-        </ul>
+        <div v-if="!info.disableImg && info.image">
+          <h4>Imagen:</h4>
+          <img :src="info.image" alt="" />
+        </div>
+
+        <div v-if="info.items">
+          <h4>Tecnologias usadas:</h4>
+          <ul>
+            <li v-for="(item, index) in info.items" :key="index">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -95,8 +100,14 @@ watch(
   height: auto;
   max-height: 85vh;
   overflow-y: auto;
-  padding: 20px;
+  padding: 0 20px 20px;
   transition: all 0.2s ease-in-out;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .modal h2 {
@@ -152,7 +163,6 @@ watch(
 .close:hover {
   background: rgb(247, 52, 52);
   transition: background 0.2s ease-in-out, scale 0.2s ease-in-out;
-
 }
 
 .close:active {

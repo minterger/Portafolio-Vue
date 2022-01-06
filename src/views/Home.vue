@@ -9,9 +9,9 @@ text.value = "Home";
 
 <template>
   <div>
-    <h1>{{text}}</h1>
-
-    <hr />
+    <div class="title-border-bottom">
+      <h1>{{ text }}</h1>
+    </div>
 
     <home-component />
   </div>

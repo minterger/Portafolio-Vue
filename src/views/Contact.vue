@@ -9,9 +9,9 @@ text.value = "Contactar";
 
 <template>
   <div>
-    <h1>{{ text }}</h1>
-
-    <hr />
+    <div class="title-border-bottom">
+      <h1>{{ text }}</h1>
+    </div>
 
     <h3>Escribime a travez de este formulario</h3>
 

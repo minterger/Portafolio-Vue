@@ -312,10 +312,8 @@ body {
   color: var(--color-text-secondary);
 }
 
-hr {
-  border: 1px dashed var(--border-color);
-  background: transparent;
-  margin: 1rem 0;
+.title-border-bottom {
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .container {

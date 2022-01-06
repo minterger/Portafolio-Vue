@@ -20,14 +20,7 @@ let cards = reactive([
     description:
       "Aplicacion web que permite ver las peliculas mas recientes de la web de pelislatino.ga",
     image: pelislatino,
-    items: [
-      "vue.js",
-      "axios",
-      "vuex",
-      "vue-router",
-      "bootstrap",
-      "boxicons",
-    ],
+    items: ["vue.js", "axios", "vuex", "vue-router", "bootstrap", "boxicons"],
     github: "https://github.com/minterger/app-peliculas-Vue",
     link: "https://pelislatino.ga",
   },
@@ -108,9 +101,9 @@ let cardAttr = reactive({
 
 <template>
   <div>
-    <h1>{{ text }}</h1>
-
-    <hr />
+    <div class="title-border-bottom">
+      <h1>{{ text }}</h1>
+    </div>
 
     <div class="card-container">
       <card
@@ -130,7 +123,10 @@ let cardAttr = reactive({
           <button-component :link="card.github" :type="cardAttr.buttonGitType"
             ><i class="bx bxl-github"></i
           ></button-component>
-          <button-component :type="cardAttr.buttonOpenModal" @click="openModal(index)">
+          <button-component
+            :type="cardAttr.buttonOpenModal"
+            @click="openModal(index)"
+          >
             <i class="bx bx-plus"></i>
           </button-component>
         </template>
