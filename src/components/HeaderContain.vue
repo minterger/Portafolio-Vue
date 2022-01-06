@@ -68,7 +68,7 @@ const scrollToContent = () => {
 .head {
   color: white;
 
-  --height-nav: 40px;
+  --height-nav: 42px;
   position: relative;
 
   display: flex;

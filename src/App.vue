@@ -4,9 +4,16 @@ import PortafolioNavbar from "./components/PortafolioNavbar.vue";
 
 import HeaderContain from "./components/HeaderContain.vue";
 import FooterContain from "./components/FooterContain.vue";
+
+import ContainNotification from "./components/ContainNotification.vue";
+
 import { provide, ref } from "@vue/runtime-core";
 
 let textHeader = ref("Cargando");
+
+let notifications = ref([]);
+
+provide("notifications", notifications);
 
 provide("textHeader", textHeader);
 </script>
@@ -23,6 +30,8 @@ provide("textHeader", textHeader);
       </transition>
     </router-view>
   </main>
+
+  <contain-notification />
 
   <footer-contain></footer-contain>
 

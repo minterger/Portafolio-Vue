@@ -1,6 +1,8 @@
 <script setup>
-import { computed, reactive } from "vue";
+import { computed, inject, reactive } from "vue";
 import ButtonComponent from "./ButtonComponent.vue";
+
+let notifications = inject("notifications");
 
 const formData = reactive({
   name: "",
@@ -39,15 +41,27 @@ const sendEmail = async () => {
         formData.email = "";
         formData.message = "";
 
-        alert("Email enviado con exito!");
+        notifications.value.push({
+          id: Date.now() + Math.random(),
+          type: "success",
+          message: "Tu mensaje ha sido enviado correctamente",
+        });
       }
     } catch (error) {
       console.log(error);
 
-      alert("Error Enviando el email");
+      notifications.value.push({
+        id: Date.now() + Math.random(),
+        type: "error",
+        message: "Ha ocurrido un error al enviar tu mensaje",
+      });
     }
   } else {
-    alert("Por favor completa el formulario");
+    notifications.value.push({
+      id: Date.now() + Math.random(),
+      type: "error",
+      message: "Por favor, rellena todos los campos correctamente",
+    });
   }
 };
 
