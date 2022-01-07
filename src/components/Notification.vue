@@ -1,36 +1,40 @@
 <script setup>
+import { inject, onBeforeUnmount, onBeforeUpdate, ref } from "vue";
 
-import { inject, ref } from 'vue';
-
-let notifications = inject("notifications")
+let notifications = inject("notifications");
 
 const props = defineProps({
   notification: {
     type: Object,
     required: true,
-  }
+  },
 });
 
 const borderColor = {
-  success: 'green',
-  error: 'red',
+  success: "green",
+  error: "red",
 };
 
-let color = ref('');
+let color = ref("");
 
-if (props.notification.type === 'success') {
+if (props.notification.type === "success") {
   color.value = borderColor.success;
 } else {
   color.value = borderColor.error;
 }
 
 const removeNotification = () => {
-  const index = notifications.value.indexOf(props.notification);
+  const index = notifications.value.findIndex(
+    (notification) => notification.id === props.notification.id
+  );
   notifications.value.splice(index, 1);
 };
 
-setTimeout(removeNotification, 5000);
+let timeout = setTimeout(removeNotification, 5000);
 
+onBeforeUnmount(() => {
+  clearTimeout(timeout);
+});
 </script>
 
 <template>
@@ -46,46 +50,44 @@ setTimeout(removeNotification, 5000);
   </div>
 </template>
 
-
 <style scoped>
-  .notification {
-    margin-top: 10px;
-    background: var(--color-bg);
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-    border-left: 5px solid v-bind(color);
-    display: flex;
-    flex-direction: row;
-    animation: show .3s ease-in-out;
-  }
+.notification {
+  margin-top: 10px;
+  background: var(--color-bg);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid v-bind(color);
+  display: flex;
+  flex-direction: row;
+  animation: show 0.3s ease-in-out;
+}
 
-  @keyframes show {
-    0% {
-      transform: translateX(10px);
-      opacity: 0;
-    }
-    30% {
-      opacity: 1;
-    }
-    50% {
-      transform: translateX(-10px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
+@keyframes show {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
   }
-
-  .notification-content {
-    padding: 10px;
+  30% {
+    opacity: 1;
   }
-
-  .notification-close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    cursor: pointer;
-    font-size: 30px;
+  50% {
+    transform: translateX(-10px);
   }
+  100% {
+    transform: translateX(0px);
+  }
+}
 
+.notification-content {
+  padding: 10px;
+}
+
+.notification-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  cursor: pointer;
+  font-size: 30px;
+}
 </style>
