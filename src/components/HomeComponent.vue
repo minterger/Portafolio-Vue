@@ -1,6 +1,24 @@
 <script setup>
 import { ref } from "@vue/reactivity";
 
+const educations = ref([
+  {
+    title: "Bachiller En Economia - Secundaria San Martin Labrador N° 4-135",
+    start: "Febrero de 2013",
+    end: "Diciembre de 2017",
+  },
+  {
+    title: "Tecnicatura en computación y redes - IES 9-021",
+    start: "Febrero de 2019",
+    end: "Actualidad",
+  },
+  {
+    title: "Curso Programación Full Stack - Argentina Programa",
+    start: "Noviembre de 2021",
+    end: "Actualidad",
+  },
+]);
+
 const stacks = ref([
   {
     title: "Html",
@@ -43,6 +61,15 @@ const stacks = ref([
     iconUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png",
   },
+  {
+    title: "Git",
+    iconUrl: "https://assets.stickpng.com/images/5847f981cef1014c0b5e48be.png",
+  },
+  {
+    title: "GitHub",
+    iconUrl:
+      "https://i.ibb.co/7Gr1P48/pngegg-3.png",
+  }
 ]);
 </script>
 
@@ -63,13 +90,23 @@ const stacks = ref([
     </p>
 
     <h3>Educación</h3>
-    <p>
+    <!-- <p>
       Actualmente me encuentro en la carrera de Tecnicatura en computación y
       redes, en el Instituto de Educación Superior 9-021. Tambien estoy cursando
       el curso de Desarrollo Web Full Stack de Argentina Programa.
-    </p>
+    </p> -->
+    <div v-for="education of educations" :key="education.title">
+      <strong
+        ><i class="bx bxs-right-arrow"></i> {{education.title}}</strong
+      >
+      <p class="margin-education">
+        <strong>Fecha de inicio:</strong> {{education.start}}
+        <br />
+        <strong>Fecha de finalización:</strong> {{education.end}}
+      </p>
+    </div>
 
-    <h3>Stack de tecnologías</h3>
+    <h3>Skills</h3>
     <div class="grid-container">
       <div v-for="(stack, index) of stacks" :key="index" class="grid-item">
         <span class="title">{{ stack.title }}</span>
@@ -80,6 +117,11 @@ const stacks = ref([
 </template>
 
 <style scoped>
+.margin-education {
+  margin-left: 1.4rem;
+  margin-bottom: 2rem;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
