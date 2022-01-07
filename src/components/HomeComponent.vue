@@ -63,7 +63,7 @@ const stacks = ref([
   },
   {
     title: "Git",
-    iconUrl: "https://assets.stickpng.com/images/5847f981cef1014c0b5e48be.png",
+    iconUrl: "https://i.ibb.co/zrczrNs/5847f981cef1014c0b5e48be.png",
   },
   {
     title: "GitHub",
