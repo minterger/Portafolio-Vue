@@ -140,6 +140,7 @@ const stacks = ref([
   font-size: 20px;
   height: 100px;
   text-align: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   transition: all 0.2s ease-in-out;
 }
