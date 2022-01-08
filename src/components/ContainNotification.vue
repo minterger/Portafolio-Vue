@@ -29,11 +29,8 @@ const showNotifications = computed(() => {
   right: 0;
   width: 100%;
   max-width: 250px;
-  height: auto;
-  max-height: 100vh;
-  overflow: hidden;
   padding: 0 10px;
-  z-index: 99999;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;

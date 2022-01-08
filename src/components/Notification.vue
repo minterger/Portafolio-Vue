@@ -60,6 +60,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: row;
   animation: show 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes show {
