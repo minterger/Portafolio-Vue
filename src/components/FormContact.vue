@@ -2,39 +2,55 @@
 import { computed, inject, reactive } from "vue";
 import ButtonComponent from "./ButtonComponent.vue";
 
-let notifications = inject("notifications");
+// variables injectadas desde otro componente
+// funcion para crear una nueva notificacion
+const newNotification = inject("newNotification");
 
+// constante con los datos del formulario
 const formData = reactive({
   name: "",
   email: "",
   message: "",
 });
 
+/**
+ * función para limpiar de elementos html
+ * @param {string} str string a limpiar de tags html
+ */
 const limpiarhtml = (str) => {
   return str.replace(/<\/?[^>]+(>|$)/g, "");
 };
 
+// computed con la variable formData.name limpia de tags html
 let nameLimpio = computed(() => {
   return limpiarhtml(formData.name);
 });
 
+// computed con la variable formData.message limpia de tags html
 let messageLimpio = computed(() => {
   return limpiarhtml(formData.message);
 });
 
-// validad formData.email
+/**
+ * valida que el email tenga un formato correcto
+ * @param {string} email email a validar
+ */
 const validateEmail = (email) => {
   const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
-const isValidEmail = computed(() => {
+// computed que retorna true si el email es valido
+const isNoValidEmail = computed(() => {
   if (formData.email.length > 5) {
     return !validateEmail(formData.email);
   }
 });
 
+/**
+ * función para enviar el formulario
+ */
 const sendEmail = async () => {
   if (
     formData.name.length > 0 &&
@@ -62,27 +78,18 @@ const sendEmail = async () => {
         formData.email = "";
         formData.message = "";
 
-        notifications.value.push({
-          id: Date.now() + Math.random(),
-          type: "success",
-          message: "Tu mensaje ha sido enviado correctamente",
-        });
+        // crea una notificación de éxito
+        newNotification("Mensaje enviado correctamente", "success");
       }
     } catch (error) {
       console.log(error);
 
-      notifications.value.push({
-        id: Date.now() + Math.random(),
-        type: "error",
-        message: "Ha ocurrido un error al enviar tu mensaje",
-      });
+      // crea una notificación de error al enviar el formulario
+      newNotification("Error al enviar el mensaje", "error");
     }
   } else {
-    notifications.value.push({
-      id: Date.now() + Math.random(),
-      type: "error",
-      message: "Por favor, rellena todos los campos correctamente",
-    });
+    // crea una notificación de error porque no se llenaron todos los campos
+    newNotification("Por favor, complete todos los campos", "error");
   }
 };
 </script>
@@ -96,7 +103,7 @@ const sendEmail = async () => {
     <div>
       <label for="email">Email</label>
       <input type="email" id="email" name="email" v-model="formData.email" />
-      <span class="validEmail" v-if="isValidEmail"
+      <span class="validEmail" v-if="isNoValidEmail"
         >Escribe Un Email Valido</span
       >
     </div>

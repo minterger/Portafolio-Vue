@@ -13,8 +13,37 @@ let textHeader = ref("Cargando");
 
 let notifications = ref([]);
 
+/**
+ * Clase para crear nueva notificacion
+ * @param {string} message Mensaje de la notificacion
+ * @param {string} type Tipo de notificacion (success, error)
+ */
+class Notification {
+  constructor(message, type) {
+    this.id = Math.random();
+    this.message = message;
+    this.type = type;
+  }
+}
+
+
+/**
+ * Crear nueva notificacion y agregarla a la lista de notificaciones
+ * @param {string} message Mensaje de la notificacion
+ * @param {string} type Tipo de notificacion (success, error)
+ */
+const newNotification = (message, type) => {
+  let notification = new Notification(message, type);
+  notifications.value.push(notification);
+};
+
+// provee la funcion newNotification
+provide("newNotification", newNotification);
+
+// provee el array con las notificaciones
 provide("notifications", notifications);
 
+// provee texto del header de la pagina
 provide("textHeader", textHeader);
 </script>
 

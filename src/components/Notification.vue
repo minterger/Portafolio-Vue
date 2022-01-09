@@ -1,8 +1,10 @@
 <script setup>
 import { inject, onBeforeUnmount, onBeforeUpdate, ref } from "vue";
 
+// variables injectadas desde otro componente
 let notifications = inject("notifications");
 
+// const con los props
 const props = defineProps({
   notification: {
     type: Object,
@@ -10,28 +12,35 @@ const props = defineProps({
   },
 });
 
-const borderColor = {
+// variable que contiene los tipos de notificaciones con su color
+const borderLeftColor = {
   success: "green",
   error: "red",
 };
 
+// variable de color que se envia a los estilos
 let color = ref("");
 
+// revisa que tipo es y elije el color de bordeLeftColor
 if (props.notification.type === "success") {
-  color.value = borderColor.success;
+  color.value = borderLeftColor.success;
 } else {
-  color.value = borderColor.error;
+  color.value = borderLeftColor.error;
 }
 
+/**
+ * Función para remover la notificación
+ */
 const removeNotification = () => {
-  const index = notifications.value.findIndex(
-    (notification) => notification.id === props.notification.id
+  notifications.value = notifications.value.filter(
+    (notification) => notification.id !== props.notification.id
   );
-  notifications.value.splice(index, 1);
 };
 
+// timeout para eliminar la notificación
 let timeout = setTimeout(removeNotification, 5000);
 
+// antes que se desmonte el componente limpiar el timeout
 onBeforeUnmount(() => {
   clearTimeout(timeout);
 });
