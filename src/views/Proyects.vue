@@ -5,8 +5,11 @@ import ButtonComponent from "../components/ButtonComponent.vue";
 import Modal from "../components/Modal.vue";
 import { inject, provide } from "@vue/runtime-core";
 
-import pelislatino from "../assets/proyectsImg/pelislatino.png";
 import { useRouter } from "vue-router";
+
+//import images from "../assets/proyectsImg/";
+import PelisLatino from "../assets/proyectsImg/pelislatino.png";
+import UploadImg from "../assets/proyectsImg/upload-img.png";
 
 const router = useRouter();
 
@@ -14,25 +17,26 @@ const text = inject("textHeader");
 
 text.value = "Proyectos";
 
+
 let cards = reactive([
   {
     title: "PelisLatino",
     description:
       "Aplicacion web que permite ver las peliculas mas recientes de la web de pelislatino.ga",
-    image: pelislatino,
+    image: PelisLatino,
     items: ["vue.js", "axios", "vuex", "vue-router", "bootstrap", "boxicons"],
     github: "https://github.com/minterger/app-peliculas-Vue",
     link: "https://pelislatino.ga",
   },
   {
-    title: "Card Title",
+    title: "Upload-Img",
     description:
-      "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, quibusdam cum omnis explicabo est, labore veniam sit sunt consectetur doloribus dolor commodi molestiae cumque placeat, adipisci maiores rerum. Debitis, accusantium?",
-    image: "https://webdenutris.com/wp-content/uploads/partes-navegador.jpg",
-    disableImg: true,
-    items: ["vue.js", "axios", "vuex", "vue-router", "bootstrap", "boxicons"],
-    github: "#",
-    link: "#",
+      "Aplicacion web que permite subir imagenes a clodinary y atravez de una api y te devuelve la url de la imagen",
+    image: UploadImg,
+    disableImg: false,
+    items: ["vue 3", "axios", "tailwind", "boxicons"],
+    github: "https://github.com/minterger/upload-img",
+    link: "http://upload-img.vercel.app",
   },
   {
     title: "Card Title",
