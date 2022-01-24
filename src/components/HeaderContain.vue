@@ -23,11 +23,10 @@ const scrollToContent = () => {
           <div class="info">
             <h1>Leonel Menci</h1>
             <p>
-              Programador FullStack (MEVN Stack) apasionado por la tecnología y
-              la programación
+              {{ $t("headerContain.description") }}
             </p>
             <p>
-              Aca podras ver mi informacion, proyectos y formas de contactarme
+              {{ $t("headerContain.info") }}
             </p>
           </div>
 

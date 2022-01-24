@@ -3,20 +3,26 @@ import { reactive } from "@vue/reactivity";
 import Card from "../components/Card.vue";
 import ButtonComponent from "../components/ButtonComponent.vue";
 import Modal from "../components/Modal.vue";
-import { inject, provide } from "@vue/runtime-core";
+import { inject, provide, watch } from "@vue/runtime-core";
 
 import { useRouter } from "vue-router";
 
 //import images from "../assets/proyectsImg/";
 import PelisLatino from "../assets/proyectsImg/pelislatino.png";
 import UploadImg from "../assets/proyectsImg/upload-img.png";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
 
 const text = inject("textHeader");
 
-text.value = "Proyectos";
+const { t, locale } = useI18n();
 
+text.value = t("textMoreHeader.proyects");
+
+watch(locale, () => {
+  text.value = t("textMoreHeader.proyects");
+});
 
 let cards = reactive([
   {

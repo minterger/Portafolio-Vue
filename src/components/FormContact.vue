@@ -1,10 +1,13 @@
 <script setup>
 import { computed, inject, reactive } from "vue";
+import { useI18n } from "vue-i18n";
 import ButtonComponent from "./ButtonComponent.vue";
 
 // variables injectadas desde otro componente
 // funcion para crear una nueva notificacion
 const newNotification = inject("newNotification");
+
+const { t } = useI18n();
 
 // constante con los datos del formulario
 const formData = reactive({
@@ -79,17 +82,17 @@ const sendEmail = async () => {
         formData.message = "";
 
         // crea una notificación de éxito
-        newNotification("Mensaje enviado correctamente", "success");
+        newNotification(t('formTexts.success'), "success");
       }
     } catch (error) {
       console.log(error);
 
       // crea una notificación de error al enviar el formulario
-      newNotification("Error al enviar el mensaje", "error");
+      newNotification(t('fotmTexts.error'), "error");
     }
   } else {
     // crea una notificación de error porque no se llenaron todos los campos
-    newNotification("Por favor, complete todos los campos", "error");
+    newNotification(t('formTexts.cleanError'), "error");
   }
 };
 </script>
@@ -97,18 +100,18 @@ const sendEmail = async () => {
 <template>
   <form @submit.prevent="sendEmail">
     <div>
-      <label for="name">Name</label>
+      <label for="name">{{$t('formTexts.name')}}</label>
       <input type="text" name="name" id="name" v-model="formData.name" />
     </div>
     <div>
-      <label for="email">Email</label>
+      <label for="email">{{$t('formTexts.email')}}</label>
       <input type="email" id="email" name="email" v-model="formData.email" />
       <span class="validEmail" v-if="isNoValidEmail"
-        >Escribe Un Email Valido</span
+        >{{$t('formTexts.validEmail')}}</span
       >
     </div>
     <div>
-      <label for="">Message</label>
+      <label for="">{{$t('formTexts.message')}}</label>
       <textarea name="message" v-model="formData.message"></textarea>
     </div>
     <button-component
@@ -116,7 +119,7 @@ const sendEmail = async () => {
       size="lg"
       display="block"
       type="danger"
-      >Enviar</button-component
+      >{{$t('formTexts.send')}}</button-component
     >
   </form>
 </template>

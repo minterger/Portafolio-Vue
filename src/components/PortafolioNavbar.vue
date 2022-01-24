@@ -3,6 +3,8 @@ import { ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 
+import ChangeLocale from "./ChangeLocale.vue";
+
 const route = useRoute();
 
 let ToggleMenu = ref(false);
@@ -26,26 +28,34 @@ watch(
 <template>
   <div id="nav">
     <div class="nav-contain">
-      <router-link class="nav-brand" to="/">Portafolio</router-link>
+      <router-link class="nav-brand" to="/">{{$t('navItems.title')}}</router-link>
       <ul class="nav-navbar" :class="{ show: ToggleMenu }">
         <li class="nav-items">
-          <router-link class="nav-links" to="/">Home</router-link>
+          <router-link class="nav-links" to="/">{{$t('navItems.home')}}</router-link>
         </li>
         <li class="nav-items">
-          <router-link class="nav-links" to="/proyects">Proyectos</router-link>
+          <router-link class="nav-links" to="/proyects">{{$t('navItems.proyects')}}</router-link>
         </li>
         <li class="nav-items">
-          <router-link class="nav-links" to="/contact">Contactar</router-link>
+          <router-link class="nav-links" to="/contact">{{$t('navItems.contact')}}</router-link>
         </li>
         <li class="nav-items">
           <a class="nav-links important" target="_blank" href="/Curriculum.pdf">
             Curriculum
           </a>
         </li>
+        <li class="nav-items locale">
+          <change-locale />
+        </li>
       </ul>
-      <button @click="toggleMenu" class="nav-toggle">
-        <i class="bx bx-menu"></i>
-      </button>
+
+      <div class="mobile">
+        <change-locale class="localeMobile" />
+
+        <button @click="toggleMenu" class="nav-toggle">
+          <i class="bx bx-menu"></i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -86,6 +96,7 @@ watch(
 
 .nav-navbar {
   display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -121,6 +132,10 @@ watch(
   background-color: var(--button-secondary-bg-hover);
 }
 
+.mobile {
+  display: none;
+}
+
 .nav-toggle {
   background: none;
   display: none;
@@ -133,7 +148,19 @@ watch(
   font-size: 2rem;
 }
 
+.localeMobile {
+  display: none;
+}
+
 @media (max-width: 568px) {
+  .locale {
+    display: none;
+  }
+
+  .localeMobile {
+    display: block;
+  }
+
   #nav {
     height: 50px;
   }
@@ -153,6 +180,7 @@ watch(
     display: flex;
     position: fixed;
     background: var(--color-bg-navbar);
+    align-items: unset;
     top: 40px;
     right: 0px;
     width: 100vw;
@@ -173,6 +201,11 @@ watch(
 
   .nav-items {
     margin: 10px 2px;
+  }
+
+  .mobile {
+    display: flex;
+    align-items: center;
   }
 
   .nav-toggle {

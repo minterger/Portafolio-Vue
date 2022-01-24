@@ -1,23 +1,35 @@
 <script setup>
 import { ref } from "@vue/reactivity";
+import { watch } from "@vue/runtime-core";
+import { useI18n } from "vue-i18n";
 
-const educations = ref([
-  {
-    title: "Bachiller En Economia - Secundaria San Martin Labrador N° 4-135",
-    start: "Febrero de 2013",
-    end: "Diciembre de 2017",
-  },
-  {
-    title: "Tecnicatura en computación y redes - IES 9-021",
-    start: "Febrero de 2019",
-    end: "Actualidad",
-  },
-  {
-    title: "Curso Programación Full Stack - Argentina Programa",
-    start: "Noviembre de 2021",
-    end: "Actualidad",
-  },
-]);
+const { t, locale } = useI18n();
+
+const educations = ref([]);
+
+const educationsFillIn = () => {
+  educations.value = [
+    {
+      title: t("homeTexts.educations[0].title"),
+      start: t("homeTexts.educations[0].start"),
+      end: t("homeTexts.educations[0].end"),
+    },
+    {
+      title: t("homeTexts.educations[1].title"),
+      start: t("homeTexts.educations[1].start"),
+      end: t("homeTexts.educations[1].end"),
+    },
+    {
+      title: t("homeTexts.educations[2].title"),
+      start: t("homeTexts.educations[2].start"),
+      end: t("homeTexts.educations[2].end"),
+    },
+  ];
+};
+
+educationsFillIn();
+
+watch(locale, educationsFillIn);
 
 const stacks = ref([
   {
@@ -62,47 +74,50 @@ const stacks = ref([
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png",
   },
   {
+    title: "Tailwind",
+    iconUrl:
+      "https://i.ibb.co/pxsXJ4M/Method-Draw-Image.png",
+  },
+  {
+    title: "Socket.io",
+    iconUrl:
+      "https://i.ibb.co/jrS14Bw/kisspng-socket-io-node-js-express-js-npm-network-socket-protocol-5b21d1b8094784-36637107152894303203.png",
+  },
+  {
     title: "Git",
     iconUrl: "https://i.ibb.co/zrczrNs/5847f981cef1014c0b5e48be.png",
   },
   {
     title: "GitHub",
-    iconUrl:
-      "https://i.ibb.co/7Gr1P48/pngegg-3.png",
-  }
+    iconUrl: "https://i.ibb.co/7Gr1P48/pngegg-3.png",
+  },
 ]);
 </script>
 
 <template>
   <div class="hello">
-    <h3>Mi Información</h3>
+    <h3>{{ $t("homeTexts.infoTitle") }}</h3>
+    <p v-html="$t('homeTexts.infoDescription')"></p>
+
+    <h3>{{ $t("homeTexts.moreInfoTitle") }}</h3>
     <p>
-      Hola me llamo <strong>Leonel Menci</strong>, soy programador full stack y
-      desarrollador web. Apacionado por la programación y la tecnología, me
-      encanta aprender nuevas tecnologías y frameworks.
+      {{ $t("homeTexts.moreInfoDescription") }}
     </p>
 
-    <h3>Más sobre mi</h3>
-    <p>
-      Me considero una persona responsable, con una gran capacidad de adaptación
-      y una gran capacidad de trabajo en equipo. Me gusta trabajar en equipo,
-      con personas que me dan valor y que me dan apoyo.
-    </p>
-
-    <h3>Educación</h3>
+    <h3>{{ $t("homeTexts.educationTitle") }}</h3>
     <!-- <p>
       Actualmente me encuentro en la carrera de Tecnicatura en computación y
       redes, en el Instituto de Educación Superior 9-021. Tambien estoy cursando
       el curso de Desarrollo Web Full Stack de Argentina Programa.
     </p> -->
     <div v-for="education of educations" :key="education.title">
-      <strong
-        ><i class="bx bxs-right-arrow"></i> {{education.title}}</strong
-      >
+      <strong><i class="bx bxs-right-arrow"></i> {{ education.title }}</strong>
       <p class="margin-education">
-        <strong>Fecha de inicio:</strong> {{education.start}}
+        <strong>{{ $t("homeTexts.educationStartDateMsg") }}</strong>
+        {{ education.start }}
         <br />
-        <strong>Fecha de finalización:</strong> {{education.end}}
+        <strong>{{ $t("homeTexts.educationEndDateMsg") }}</strong>
+        {{ education.end }}
       </p>
     </div>
 

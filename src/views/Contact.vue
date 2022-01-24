@@ -1,10 +1,17 @@
 <script setup>
 import FormContact from "../components/FormContact.vue";
-import { inject } from "@vue/runtime-core";
+import { inject, watch } from "@vue/runtime-core";
+import { useI18n } from "vue-i18n";
+
+const { t, locale } = useI18n(); 
 
 const text = inject("textHeader");
 
-text.value = "Contactar";
+text.value = t("textMoreHeader.contact");
+
+watch(locale, () => {
+  text.value = t("textMoreHeader.contact");
+});
 </script>
 
 <template>
@@ -13,11 +20,11 @@ text.value = "Contactar";
       <h1>{{ text }}</h1>
     </div>
 
-    <h3>Escribime a travez de este formulario</h3>
+    <h3>{{$t('formTexts.titleForm')}}</h3>
 
     <form-contact></form-contact>
 
-    <h3>O escribeme a travez de mis redes sociales</h3>
+    <h3>{{$t('formTexts.secondTitle')}}</h3>
 
     <div class="social-media">
       <!-- facebook button social -->

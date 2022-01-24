@@ -1,10 +1,17 @@
 <script setup>
-import { inject } from "@vue/runtime-core";
+import { inject, watch } from "@vue/runtime-core";
+import { useI18n } from "vue-i18n";
 import HomeComponent from "../components/HomeComponent.vue";
+
+const { t, locale } = useI18n();
 
 const text = inject("textHeader");
 
-text.value = "Home";
+text.value = t("textMoreHeader.home");
+
+watch(locale, () => {
+  text.value = t("textMoreHeader.home");
+});
 </script>
 
 <template>
