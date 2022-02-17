@@ -166,8 +166,7 @@ watch(
   }
 
   .nav-links {
-    font-size: 1.1rem;
-    padding: 0.8em 0em;
+    padding: 0.7em 0em;
     display: block;
     text-align: center;
   }
@@ -181,17 +180,19 @@ watch(
     position: fixed;
     background: var(--color-bg-navbar);
     align-items: unset;
-    top: 40px;
+    top: 50px;
     right: 0px;
     width: 100vw;
     height: 0;
     flex-direction: column;
     transition: all 0.3s ease;
+    visibility: hidden;
     overflow: hidden;
   }
 
   .nav-navbar.show {
-    height: calc(100vh - 40px);
+    height: calc(100vh - 50px);
+    visibility: visible;
     transition: all 0.3s ease;
   }
 
