@@ -5,20 +5,17 @@ import Notification from "./Notification.vue";
 
 let notifications = inject("notifications");
 
-// crear showNotifications si notifications.value.length > 0
-const showNotifications = computed(() => {
-  return notifications.value.length > 0;
-}); 
-
 </script>
 
 <template>
-  <div class="contain-notification" v-show="showNotifications">
-    <notification
-      v-for="(notification) of notifications"
-      :key="notification.id"
-      :notification="notification"
-    />
+  <div class="contain-notification">
+    <transition-group name="notification">
+      <notification
+        v-for="(notification) of notifications"
+        :key="notification.id"
+        :notification="notification"
+      />
+    </transition-group>
   </div>
 </template>
 
@@ -36,6 +33,38 @@ const showNotifications = computed(() => {
   justify-content: center;
   align-items: center;
 }
+
+.notification-enter-active {
+  animation: show 0.5s;
+}
+.notification-leave-active {
+  animation: hide 0.5s;
+}
+@keyframes show {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes hide {
+  from {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
 
 @media (max-width: 568px) {
   .contain-notification {

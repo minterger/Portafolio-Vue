@@ -68,24 +68,6 @@ onBeforeUnmount(() => {
   border-left: 5px solid v-bind(color);
   display: flex;
   flex-direction: row;
-  animation: show 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-@keyframes show {
-  0% {
-    transform: translateX(10px);
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(-10px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
 }
 
 .notification-content {
