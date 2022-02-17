@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "@vue/reactivity"
+import { ref } from "@vue/reactivity";
 
 const props = defineProps({
   type: {
@@ -8,29 +8,38 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: 'md'
+    default: "md",
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   link: {
     type: String,
   },
   display: {
     type: String,
-    default: 'inline-block'
+    default: "inline-block",
   },
-})
+});
 
-const ButtonDisplay = ref(props.display)
+const ButtonDisplay = ref(props.display);
 </script>
 
 <template>
-  <a v-if="props.link" class="button" :class="[props.size, props.disabled === true ? 'disabled' : '', props.type]" :href="props.link">
+  <a
+    v-if="props.link"
+    class="button"
+    :class="[props.size, props.disabled === true ? 'disabled' : '', props.type]"
+    :href="props.link"
+  >
     <slot></slot>
   </a>
-  <button v-else class="button" :class="[props.size, props.disabled === true ? 'disabled' : '', props.type]">
+  <button
+    v-else
+    class="button"
+    :class="[props.size, props.disabled === true ? 'disabled' : '', props.type]"
+  >
     <slot></slot>
   </button>
 </template>
@@ -47,7 +56,7 @@ const ButtonDisplay = ref(props.display)
 
 .sm {
   padding: 3px 5px;
-  } 
+}
 
 .md {
   padding: 5px 10px;
@@ -112,10 +121,16 @@ const ButtonDisplay = ref(props.display)
 }
 
 @media screen and (max-width: 568px) {
-  .button {
-      padding: 8px 12px;
-      font-size: 1.5rem;
+  .sm {
+    padding: 4px 6px;
+  }
+
+  .md {
+    padding: 7px 12px;
+  }
+
+  .lg {
+    padding: 12px 22px;
   }
 }
-
 </style>
