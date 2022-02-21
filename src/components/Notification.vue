@@ -66,6 +66,7 @@ onBeforeUnmount(() => {
   border-radius: 4px;
   border: 1px solid var(--border-color);
   border-left: 5px solid v-bind(color);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
 }
